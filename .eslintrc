@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "@sadorlovsky",
+    "@sadorlovsky/eslint-config/react"
+  ],
+
+  "rules": {
+    "global-require": "off",
+    "import/default": "off"
+  }
+}
