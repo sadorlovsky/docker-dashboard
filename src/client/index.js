@@ -1,11 +1,21 @@
 import React from 'react'
+import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
 
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface('/graphql', {
+    credentials: 'same-origin'
+  })
+})
+
 render((
   <AppContainer>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </AppContainer>
 ), document.getElementById('root'))
 
@@ -15,7 +25,9 @@ if (module.hot) {
 
     render((
       <AppContainer>
-        <NextApp />
+        <ApolloProvider client={client}>
+          <NextApp />
+        </ApolloProvider>
       </AppContainer>
     ), document.getElementById('root'))
   })
