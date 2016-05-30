@@ -30,8 +30,6 @@
   "homepage": "https://github.com/sadorlovsky/docker-dashboard",
   "dependencies": {
     "apollo-client": "^0.3.12",
-    "babel-preset-stage-3": "^6.5.0",
-    "dockerode": "^2.2.10",
     "express": "^4.13.4",
     "express-graphql": "^0.5.3",
     "got": "^6.3.0",
@@ -57,7 +55,6 @@
     "eslint-plugin-ava": "^2.2.1",
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-react": "^5.1.1",
-    "koa-webpack-middleware": "^1.0.1",
     "nodemon": "^1.9.2",
     "nyc": "^6.4.4",
     "react-hot-loader": "^3.0.0-beta.2",
