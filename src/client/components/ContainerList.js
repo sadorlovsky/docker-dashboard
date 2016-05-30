@@ -4,10 +4,11 @@ import gql from 'apollo-client/gql'
 import Container from './Container'
 
 const ContainerList = ({ data }) => {
+  console.log(data)
   if (data.loading) {
     return <div>...loading</div>
   }
-  const containers = data.containers.map(container => {
+  const containers = data.getContainerList.map(container => {
     return <Container key={container.id} container={container} />
   })
   return (
@@ -22,7 +23,7 @@ const mapQueriesToProps = () => {
     data: {
       query: gql`
         query Query {
-          containers {
+          getContainerList {
             id
             name
             image

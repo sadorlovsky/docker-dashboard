@@ -1,10 +1,12 @@
 import express from 'express'
-import graphqlHTTP from 'express-graphql'
+import { apolloServer } from 'graphql-tools'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import config from '../../webpack.config'
 import schema from './schema'
+import mocks from './mocks'
+import resolvers from './resolvers'
 
 const compile = webpack(config)
 const app = express()
@@ -19,8 +21,11 @@ app.use(webpackDevMiddleware(compile, {
 }))
 app.use(webpackHotMiddleware(compile))
 app.use(express.static('public'))
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', apolloServer({
   schema,
-  graphiql: true
+  // mocks,
+  resolvers,
+  graphiql: true,
+  pretty: true
 }))
 app.listen(3000, () => console.log('listening on port 3000'))

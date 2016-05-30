@@ -1,6 +1,6 @@
 import got from 'got'
 
-export function getContainerList () {
+function getContainerList () {
   return got('http://unix:/var/run/docker.sock:/containers/json?all=true')
     .then(response => JSON.parse(response.body))
     .then(data => data.map(container => {
@@ -10,4 +10,21 @@ export function getContainerList () {
         image: container.Image
       }
     }))
+}
+
+function getContainer (id) {
+  return got(`http://unix:/var/run/docker.sock:/containers/${id}/json`)
+  .then(response => JSON.parse(response.body))
+  .then(container => {
+    return {
+      id: container.Id,
+      name: container.Name,
+      image: container.Image
+    }
+  })
+}
+
+export default {
+  getContainer,
+  getContainerList
 }
