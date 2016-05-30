@@ -4,7 +4,6 @@ import gql from 'apollo-client/gql'
 import Container from './Container'
 
 const ContainerList = ({ data }) => {
-  console.log(data)
   if (data.loading) {
     return <div>...loading</div>
   }

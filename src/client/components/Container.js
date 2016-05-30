@@ -1,26 +1,19 @@
 import React from 'react'
-
-const style = {
-  border: '1px solid #000',
-  padding: '10px',
-  marginBottom: '10px',
-  fontSize: '2rem'
-}
-
-const spa = {
-  color: '#ccc'
-}
+import css from 'react-css-modules'
+import styles from './Container.sss'
 
 const Container = ({ container }) => {
   return (
-    <div style={style}>
-      <div>id: {container.id.substring(0, 12)}</div>
+    <div styleName='container'>
+      <div styleName='on'></div>
+      <div styleName='name'>{container.name}</div>
+      {/*<div>id: {container.id.substring(0, 12)}</div>
       <div>name: {container.name}</div>
       <div>
-        image: <span style={spa}>{container.image}</span>
-      </div>
+        image: {container.image}
+      </div>*/}
     </div>
   )
 }
 
-export default Container
+export default css(Container, styles)

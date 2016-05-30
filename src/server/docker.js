@@ -4,9 +4,10 @@ function getContainerList () {
   return got('http://unix:/var/run/docker.sock:/containers/json?all=true')
     .then(response => JSON.parse(response.body))
     .then(data => data.map(container => {
+      console.log(container)
       return {
         id: container.Id,
-        name: container.Names[0],
+        name: container.Names[0].substring(1),
         image: container.Image
       }
     }))
@@ -18,7 +19,7 @@ function getContainer (id) {
   .then(container => {
     return {
       id: container.Id,
-      name: container.Name,
+      name: container.Name.substring(1),
       image: container.Image
     }
   })

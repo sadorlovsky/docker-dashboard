@@ -1,0 +1,27 @@
+.container
+  border: 1px solid #ccc
+  width: 200px
+  padding: 10px
+  font-family: 'PT Sans'
+  margin-bottom: 10px
+  display: flex
+  align-items: center
+
+.name
+  text-align: center
+  font-size: 1.3rem
+  font-weight: bold
+  flex-grow: 1
+
+.status
+  width: 10px
+  height: 10px
+  border-radius: 50%
+
+.on
+  composes: status
+  background: rgb(50, 219, 77)
+
+.off
+  composes: status
+  background: rgb(224, 224, 224)
