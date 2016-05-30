@@ -4,6 +4,10 @@
     "@sadorlovsky/eslint-config/react"
   ],
 
+  "settings": {
+    "import/ignore": ["node_modules", ".(css|sss|svg)$"]
+  },
+
   "rules": {
     "global-require": "off",
     "import/default": "off",

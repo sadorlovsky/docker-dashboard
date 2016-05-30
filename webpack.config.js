@@ -1,5 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
+const cssnext = require('postcss-cssnext')
+const fontMagician = require('postcss-font-magician')
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -19,7 +21,18 @@ module.exports = {
         test: /\.js$/,
         include: [path.resolve('src', 'client')],
         loaders: ['babel']
+      },
+      {
+        test: /\.sss/,
+        include: [path.resolve('src', 'client')],
+        loader: 'style-loader?sourceMap!css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss-loader?parser=sugarss'
       }
+    ]
+  },
+  postcss () {
+    return [
+      cssnext,
+      fontMagician
     ]
   },
   plugins: [
