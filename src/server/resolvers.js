@@ -8,6 +8,11 @@ const resolveFunctions = {
     getContainerList () {
       return api.getContainerList()
     }
+  },
+  Container: {
+    running ({ id }) {
+      return api.getContainer(id).then(data => data.running)
+    }
   }
 }
 

@@ -26,6 +26,7 @@ const mapQueriesToProps = () => {
             id
             name
             image
+            running
           }
         }
       `,

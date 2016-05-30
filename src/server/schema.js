@@ -3,6 +3,7 @@ type Container {
   id: String!
   name: String!
   image: String!
+  running: Boolean!
 }
 
 type Query {
