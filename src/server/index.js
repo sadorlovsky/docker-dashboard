@@ -22,7 +22,7 @@ app.use(webpackDevMiddleware(compile, {
   }
 }))
 app.use(webpackHotMiddleware(compile))
-app.use(express.static('public'))
+app.use('*', express.static('public'))
 app.use('/graphql', apolloServer({
   schema,
   mocks,
