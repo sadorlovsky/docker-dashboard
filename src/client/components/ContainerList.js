@@ -8,7 +8,11 @@ import styles from './ContainerList.sss'
 
 const ContainerList = ({ data }) => {
   if (data.loading) {
-    return <Spinner spinnerName='wandering-cubes' noFadeIn />
+    return (
+      <div styleName='loading'>
+        <Spinner spinnerName='wandering-cubes' noFadeIn />
+      </div>
+    )
   }
   const containers = data.getContainerList.map(container => {
     return <Container key={container.id} container={container} />
