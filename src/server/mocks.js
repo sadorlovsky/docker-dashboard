@@ -1,8 +1,12 @@
+import faker from 'faker'
+
 const mocks = {
   Container: () => ({
-    id: () => 'f08a1799e0e7',
-    name: () => 'cocky_lumiere',
-    image: () => 'alpine_node'
+    id: () => faker.random.uuid(),
+    name: () => faker.helpers.slugify(faker.random.word()),
+    image: () => faker.helpers.slugify(faker.random.word()),
+    running: () => faker.helpers.randomize([true, false]),
+    command: () => faker.hacker.phrase()
   })
 }
 

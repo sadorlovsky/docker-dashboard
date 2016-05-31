@@ -4,6 +4,7 @@ type Container {
   name: String!
   image: String!
   running: Boolean!
+  command: String!
 }
 
 type Query {

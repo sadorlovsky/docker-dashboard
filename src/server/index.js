@@ -7,6 +7,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import config from '../../webpack.config'
 /* eslint-enable import/default */
 import schema from './schema'
+import mocks from './mocks'
 import resolvers from './resolvers'
 
 const compile = webpack(config)
@@ -24,7 +25,7 @@ app.use(webpackHotMiddleware(compile))
 app.use(express.static('public'))
 app.use('/graphql', apolloServer({
   schema,
-  // mocks,
+  mocks,
   resolvers,
   graphiql: true,
   pretty: true
