@@ -24,7 +24,11 @@ module.exports = {
         loaders: ['babel']
       },
       {
-        test: /\.sss/,
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.sss$/,
         include: [path.resolve('src', 'client')],
         loader: 'style-loader?sourceMap!css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss-loader?parser=sugarss'
       }

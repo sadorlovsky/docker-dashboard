@@ -3,7 +3,7 @@ import { MockList } from 'graphql-tools'
 
 const mocks = {
   Query: () => ({
-    getContainerList: () => new MockList([2, 50])
+    getContainerList: () => new MockList([10, 50])
   }),
   Container: () => ({
     id: () => faker.random.uuid(),
