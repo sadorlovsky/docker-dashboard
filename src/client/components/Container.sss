@@ -26,8 +26,14 @@
   background: rgb(224, 224, 224)
 
 .id
+  padding: 10px
   text-align: center
-  color: #D0D0BB
+  & a
+    color: #D0D0BB
+    text-decoration: none
+    &:hover
+      color: #3B60E4
+      text-decoration: underline
 
 .header
   display: flex
@@ -49,7 +55,20 @@
 
 .image
   padding: 10px
+  display: flex
+  justify-content: space-between
+
+.image-name
+  font-weight: bold
   font-size: 1.1rem
+
+.image-id
+  & a
+    color: #D0D0BB
+    text-decoration: none
+    &:hover
+      color: #3B60E4
+      text-decoration: underline
 
 .command
   padding: 10px

@@ -10,10 +10,21 @@ const Container = ({ container }) => {
         <div styleName='name'>{container.name}</div>
       </div>
       <div styleName='divider'></div>
-      <div styleName='id'>{container.id.substring(0, 12)}</div>
+      <div styleName='id'>
+        <a href='#'>
+          {container.id.substring(0, 22)}
+        </a>
+      </div>
       <div styleName='divider'></div>
       <div styleName='image'>
-        {container.image}
+        <div styleName='image-name'>
+          {container.image}
+        </div>
+        <div styleName='image-id'>
+          <a href='#'>
+            {container.imageId.substring(0, 18)}
+          </a>
+        </div>
       </div>
       <div styleName='divider'></div>
       <div styleName='command'>
