@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div styleName='header'>
       <Link to='/'>
-        <img styleName='logo' src='/images/docker-white.svg' />
+        <img styleName='logo' src='/images/docker.svg' />
       </Link>
       <div styleName='title'>Docker Dashboard</div>
       <div>
