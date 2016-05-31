@@ -29,5 +29,6 @@ app.use('/graphql', apolloServer({
   graphiql: true,
   pretty: true
 }))
+app.use('/images', express.static('public/images'))
 app.use('*', express.static('public'))
 app.listen(3000, () => console.log('listening on port 3000'))
