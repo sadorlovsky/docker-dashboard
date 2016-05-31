@@ -3,6 +3,7 @@ type Container {
   id: String!
   name: String!
   image: String!
+  imageId: String!
   running: Boolean!
   command: String!
 }
