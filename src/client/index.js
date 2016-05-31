@@ -21,7 +21,9 @@ render((
 
 if (module.hot) {
   module.hot.accept('./components/App', () => {
+    /* eslint-disable global-require */
     const NextApp = require('./components/App').default
+    /* eslint-enable global-require */
 
     render((
       <AppContainer>

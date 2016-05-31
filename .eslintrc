@@ -6,11 +6,5 @@
 
   "settings": {
     "import/ignore": ["node_modules", ".(css|sss|svg)$"]
-  },
-
-  "rules": {
-    "global-require": "off",
-    "import/default": "off",
-    "max-statements-per-line": "off"
   }
 }

@@ -3,9 +3,10 @@ import { apolloServer } from 'graphql-tools'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
+/* eslint-disable import/default */
 import config from '../../webpack.config'
+/* eslint-enable import/default */
 import schema from './schema'
-import mocks from './mocks'
 import resolvers from './resolvers'
 
 const compile = webpack(config)
