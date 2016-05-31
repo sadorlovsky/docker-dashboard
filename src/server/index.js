@@ -22,7 +22,6 @@ app.use(webpackDevMiddleware(compile, {
   }
 }))
 app.use(webpackHotMiddleware(compile))
-app.use('*', express.static('public'))
 app.use('/graphql', apolloServer({
   schema,
   mocks,
@@ -30,4 +29,5 @@ app.use('/graphql', apolloServer({
   graphiql: true,
   pretty: true
 }))
+app.use('*', express.static('public'))
 app.listen(3000, () => console.log('listening on port 3000'))
