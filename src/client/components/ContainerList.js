@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-apollo'
 import gql from 'apollo-client/gql'
+import css from 'react-css-modules'
 import Container from './Container'
+import styles from './ContainerList.sss'
 
 const ContainerList = ({ data }) => {
   if (data.loading) {
@@ -11,7 +13,7 @@ const ContainerList = ({ data }) => {
     return <Container key={container.id} container={container} />
   })
   return (
-    <div>
+    <div styleName='list'>
       {containers}
     </div>
   )
@@ -37,4 +39,6 @@ const mapQueriesToProps = () => {
   }
 }
 
-export default connect({ mapQueriesToProps })(ContainerList)
+export default connect({
+  mapQueriesToProps
+})(css(ContainerList, styles))

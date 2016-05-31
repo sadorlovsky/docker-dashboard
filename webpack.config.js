@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const cssnext = require('postcss-cssnext')
 const fontMagician = require('postcss-font-magician')
+const lost = require('lost')
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -32,7 +33,8 @@ module.exports = {
   postcss () {
     return [
       cssnext,
-      fontMagician
+      fontMagician,
+      lost
     ]
   },
   plugins: [
