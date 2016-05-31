@@ -25,7 +25,19 @@ function getContainer (id) {
   })
 }
 
+function stopContainer (id) {
+  return got.post(`http://unix:/var/run/docker.sock:/containers/${id}/stop`)
+    .then(response => response.statusCode)
+}
+
+function startContainer (id) {
+  return got.post(`http://unix:/var/run/docker.sock:/containers/${id}/start`)
+    .then(response => response.statusCode)
+}
+
 export default {
   getContainer,
-  getContainerList
+  getContainerList,
+  stopContainer,
+  startContainer
 }

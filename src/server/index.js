@@ -24,8 +24,8 @@ app.use(webpackDevMiddleware(compile, {
 app.use(webpackHotMiddleware(compile))
 app.use('/graphql', apolloServer({
   schema,
-  mocks,
   resolvers,
+  mocks,
   graphiql: true,
   pretty: true
 }))

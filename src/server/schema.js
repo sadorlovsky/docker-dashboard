@@ -10,11 +10,17 @@ type Container {
 
 type Query {
   getContainerList: [Container]
-  getContainer(id: String): Container
+  getContainer(id: String!): Container
+}
+
+type Mutation {
+  stopContainer(id: String!): String
+  startContainer(id: String!): String
 }
 
 schema {
   query: Query
+  mutation: Mutation
 }
 `
 
