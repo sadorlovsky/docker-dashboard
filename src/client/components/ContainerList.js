@@ -27,6 +27,7 @@ const mapQueriesToProps = () => {
             name
             image
             running
+            command
           }
         }
       `,
