@@ -1,6 +1,7 @@
 import React from 'react'
 import css from 'react-css-modules'
 import { Link } from 'react-router'
+import { shortenId } from '../helpers'
 import styles from './Container.sss'
 
 const Container = ({ container }) => {
@@ -13,7 +14,7 @@ const Container = ({ container }) => {
       <div styleName='divider'></div>
       <div styleName='id'>
         <Link to={`/container/${container.id}`}>
-          {container.id.substring(0, 22)}
+          {shortenId(container.id, 22)}
         </Link>
       </div>
       <div styleName='divider'></div>
