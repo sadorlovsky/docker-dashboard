@@ -1,19 +1,27 @@
 import React from 'react'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import ApolloClient from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
+import rootReducer from './reducers'
 
-const client = new ApolloClient({
-  networkInterface: createNetworkInterface('/graphql', {
-    credentials: 'same-origin'
-  })
-})
+const client = new ApolloClient()
+const store = createStore(
+  combineReducers({
+    rootReducer,
+    apollo: client.reducer()
+  }),
+  compose(
+    applyMiddleware(client.middleware()),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+)
 
 render((
   <AppContainer>
-    <ApolloProvider client={client}>
+    <ApolloProvider store={store} client={client}>
       <App />
     </ApolloProvider>
   </AppContainer>
@@ -27,7 +35,7 @@ if (module.hot) {
 
     render((
       <AppContainer>
-        <ApolloProvider client={client}>
+        <ApolloProvider store={store} client={client}>
           <NextApp />
         </ApolloProvider>
       </AppContainer>

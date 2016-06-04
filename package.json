@@ -39,7 +39,9 @@
     "react-css-modules": "^3.7.6",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",
-    "react-spinkit": "^1.1.7"
+    "react-spinkit": "^1.1.7",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.9.1"
   },
   "devDependencies": {
     "@sadorlovsky/eslint-config": "^0.8.0",
