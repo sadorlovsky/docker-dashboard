@@ -41,7 +41,8 @@
     "react-router": "^2.4.1",
     "react-spinkit": "^1.1.7",
     "redux": "^3.5.2",
-    "redux-actions": "^0.9.1"
+    "redux-actions": "^0.9.1",
+    "redux-localstorage": "^0.4.0"
   },
   "devDependencies": {
     "@sadorlovsky/eslint-config": "^0.8.0",

@@ -1,5 +1,6 @@
 import React from 'react'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import persistState from 'redux-localstorage'
 import ApolloClient from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { render } from 'react-dom'
@@ -15,6 +16,7 @@ const store = createStore(
   }),
   compose(
     applyMiddleware(client.middleware()),
+    persistState('rootReducer'),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )
