@@ -1,8 +1,8 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import ContainerList from './ContainerList'
-import ContainerDetail from './ContainerDetail'
-import Layout from './Layout'
+import ContainerList from '../DockerContainer/List/List'
+import ContainerDetail from '../DockerContainer/Detail/Detail'
+import Layout from '../Layout/Layout'
 
 const App = () => {
   return (

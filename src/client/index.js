@@ -5,7 +5,7 @@ import ApolloClient from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import App from './components/App'
+import App from './components/App/App'
 import rootReducer from './reducers'
 
 const client = new ApolloClient()
@@ -30,9 +30,9 @@ render((
 ), document.getElementById('root'))
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./components/App/App', () => {
     /* eslint-disable global-require */
-    const NextApp = require('./components/App').default
+    const NextApp = require('./components/App/App').default
     /* eslint-enable global-require */
 
     render((

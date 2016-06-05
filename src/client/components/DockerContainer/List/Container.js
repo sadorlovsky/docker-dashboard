@@ -1,7 +1,7 @@
 import React from 'react'
 import css from 'react-css-modules'
 import { Link } from 'react-router'
-import { shortenId } from '../helpers'
+import { shortenId } from '../../../helpers'
 import styles from './Container.sss'
 
 const Container = ({ container }) => {

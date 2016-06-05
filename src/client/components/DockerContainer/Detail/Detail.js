@@ -3,23 +3,23 @@ import { connect } from 'react-apollo'
 import css from 'react-css-modules'
 import gql from 'apollo-client/gql'
 import Spinner from 'react-spinkit'
-import { toggleId } from '../actions'
-import { shortenId } from '../helpers'
-import styles from './ContainerDetail.sss'
+import { toggleId } from '../../../actions'
+import ContainerId from './ContainerId'
+import ToggleIdButton from './ToggleIdButton'
+import styles from './Detail.sss'
 
 const ContainerDetail = ({ data, showFullId, handleClick }) => {
   if (data.loading) {
-    return <Spinner spinnerName='wandering-cubes' noFadeIn />
+    return <Spinner spinnerName='wandering-cubes' />
   }
-  const showIdType = showFullId ? 'short' : 'full'
   return (
     <div>
       <div styleName='container'>
+        <div styleName='name'>{data.container.name}</div>
         <div>
-          ID: {showFullId ? data.container.id : shortenId(data.container.id)}
-          <button onClick={() => handleClick()}>{showIdType}</button>
+          <ContainerId id={data.container.id} showFullId={showFullId} />
+          <ToggleIdButton showFullId={showFullId} handleClick={handleClick} />
         </div>
-        <div>NAME: {data.container.name}</div>
         <div>IMAGE: {data.container.image}</div>
         <div>RUNNING: {data.container.running.toString()}</div>
         <div>COMMAND: {data.container.command}</div>

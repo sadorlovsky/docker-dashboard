@@ -4,7 +4,7 @@ import gql from 'apollo-client/gql'
 import css from 'react-css-modules'
 import Spinner from 'react-spinkit'
 import Container from './Container'
-import styles from './ContainerList.sss'
+import styles from './List.sss'
 
 const ContainerList = ({ data }) => {
   if (data.loading) {
