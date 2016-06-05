@@ -10,7 +10,7 @@ const ContainerList = ({ data }) => {
   if (data.loading) {
     return (
       <div styleName='loading'>
-        <Spinner spinnerName='wandering-cubes' noFadeIn />
+        <Spinner spinnerName='wandering-cubes' />
       </div>
     )
   }

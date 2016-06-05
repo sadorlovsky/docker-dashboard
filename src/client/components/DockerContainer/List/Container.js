@@ -9,7 +9,11 @@ const Container = ({ container }) => {
     <div styleName='container'>
       <div styleName='header'>
         <div styleName={container.running ? 'on' : 'off'}></div>
-        <div styleName='name'>{container.name}</div>
+        <div styleName='name'>
+          <Link to={`/container/${container.id}`}>
+            {container.name}
+          </Link>
+        </div>
       </div>
       <div styleName='divider'></div>
       <div styleName='id'>
