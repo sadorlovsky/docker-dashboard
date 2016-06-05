@@ -1,3 +1,4 @@
+import 'isomorphic-fetch'
 import React from 'react'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import persistState from 'redux-localstorage'
