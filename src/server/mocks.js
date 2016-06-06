@@ -29,11 +29,11 @@ const mocks = {
       })
     }),
     getContainer: (_, { id }) => new Promise((resolve, reject) => {
-      return db.findOne({ id: id }, (err, _container) => {
+      return db.findOne({ id: id }, (err, container) => {
         if (err) {
           reject(err)
         }
-        resolve(_container)
+        resolve(container)
       })
     })
   })
