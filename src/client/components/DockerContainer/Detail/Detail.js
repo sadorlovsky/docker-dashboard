@@ -3,6 +3,7 @@ import { connect } from 'react-apollo'
 import css from 'react-css-modules'
 import gql from 'apollo-client/gql'
 import Spinner from 'react-spinkit'
+import compose from 'recompose/compose'
 import { toggleId } from '../../../actions'
 import ContainerId from './ContainerId'
 import ToggleIdButton from './ToggleIdButton'
@@ -64,8 +65,13 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect({
-  mapQueriesToProps,
-  mapStateToProps,
-  mapDispatchToProps
-})(css(ContainerDetail, styles))
+const enchance = compose(
+  connect({
+    mapQueriesToProps,
+    mapStateToProps,
+    mapDispatchToProps
+  }),
+  css(styles)
+)
+
+export default enchance(ContainerDetail)

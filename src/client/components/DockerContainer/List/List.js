@@ -3,6 +3,7 @@ import { connect } from 'react-apollo'
 import gql from 'apollo-client/gql'
 import css from 'react-css-modules'
 import Spinner from 'react-spinkit'
+import compose from 'recompose/compose'
 import Container from './Container'
 import styles from './List.sss'
 
@@ -44,6 +45,9 @@ const mapQueriesToProps = () => {
   }
 }
 
-export default connect({
-  mapQueriesToProps
-})(css(ContainerList, styles))
+const enchance = compose(
+  connect({ mapQueriesToProps }),
+  css(styles)
+)
+
+export default enchance(ContainerList)
