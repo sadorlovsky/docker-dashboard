@@ -36,6 +36,34 @@ const mocks = {
         resolve(container)
       })
     })
+  }),
+  Mutation: () => ({
+    stopContainer: (_, { id }) => new Promise((resolve, reject) => {
+      db.update({ id: id }, { $set: { running: false } }, {}, updateErr => {
+        if (updateErr) {
+          reject(updateErr)
+        }
+        db.findOne({ id: id }, (findErr, container) => {
+          if (findErr) {
+            reject(findErr)
+          }
+          resolve(container)
+        })
+      })
+    }),
+    startContainer: (_, { id }) => new Promise((resolve, reject) => {
+      db.update({ id: id }, { $set: { running: true } }, {}, updateErr => {
+        if (updateErr) {
+          reject(updateErr)
+        }
+        db.findOne({ id: id }, (findErr, container) => {
+          if (findErr) {
+            reject(findErr)
+          }
+          resolve(container)
+        })
+      })
+    })
   })
 }
 
