@@ -8,9 +8,16 @@ import DocumentTitle from 'react-document-title'
 import { toggleId } from '../../../actions'
 import ContainerId from './ContainerId'
 import ToggleIdButton from './ToggleIdButton'
+import TogglePowerButton from './TogglePowerButton'
 import styles from './Detail.sss'
 
-const ContainerDetail = ({ data, showFullId, handleClick }) => {
+const ContainerDetail = ({
+  data,
+  showFullId,
+  handleClick,
+  mutations,
+  startContainer
+}) => {
   if (data.loading) {
     return <Spinner spinnerName='wandering-cubes' />
   }
@@ -24,11 +31,17 @@ const ContainerDetail = ({ data, showFullId, handleClick }) => {
             <ToggleIdButton showFullId={showFullId} handleClick={handleClick} />
           </div>
           <div>IMAGE: {data.container.image}</div>
-          <div>RUNNING: {data.container.running.toString()}</div>
+          <div>
+            RUNNING: {data.container.running.toString()}
+          </div>
           <div>COMMAND: {data.container.command}</div>
-        </div>
-        <div>
-          <button>{data.container.running ? 'stop' : 'start'}</button>
+          <TogglePowerButton
+            data={data}
+            loading={startContainer.loading}
+            status={data.container.running}
+            handleOn={mutations.startContainer}
+            handleOff={mutations.stopContainer}
+          />
         </div>
       </div>
     </DocumentTitle>
@@ -58,6 +71,43 @@ const mapQueriesToProps = ({ ownProps }) => {
   }
 }
 
+const mapMutationsToProps = ({ ownProps }) => {
+  return {
+    stopContainer: () => ({
+      mutation: gql`
+        mutation stopContainer(
+          $containerId: String!
+        ) {
+          stopContainer(
+            id: $containerId
+          ) {
+            running
+          }
+        }
+      `,
+      variables: {
+        containerId: ownProps.routeParams.containerId
+      }
+    }),
+    startContainer: () => ({
+      mutation: gql`
+        mutation startContainer(
+          $containerId: String!
+        ) {
+          startContainer(
+            id: $containerId
+          ) {
+            running
+          }
+        }
+      `,
+      variables: {
+        containerId: ownProps.routeParams.containerId
+      }
+    })
+  }
+}
+
 const mapStateToProps = state => ({
   showFullId: state.rootReducer.showFullId
 })
@@ -71,6 +121,7 @@ const mapDispatchToProps = dispatch => ({
 const enchance = compose(
   connect({
     mapQueriesToProps,
+    mapMutationsToProps,
     mapStateToProps,
     mapDispatchToProps
   }),
