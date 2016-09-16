@@ -1,34 +1,48 @@
 import express from 'express'
-import { apolloServer } from 'apollo-server'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-/* eslint-disable import/default */
-import config from '../../webpack.config'
-/* eslint-enable import/default */
-import schema from './schema'
-import mocks from './mocks'
-// import resolvers from './resolvers'
+import bodyParser from 'body-parser'
+import { apolloExpress, graphiqlExpress } from 'apollo-server'
+import { addMockFunctionsToSchema } from 'graphql-tools'
+import schema from './graphql/schema'
+import mocks from './graphql/mocks'
 
-const compile = webpack(config)
+// import webpack from 'webpack'
+// import webpackDevMiddleware from 'webpack-dev-middleware'
+// import webpackHotMiddleware from 'webpack-hot-middleware'
+//
+// import config from '../../webpack.config'
+
+// const compile = webpack(config)
+
+const port = 3000
 const app = express()
+//
+// app.use(webpackDevMiddleware(compile, {
+//   noInfo: true,
+//   quiet: false,
+//   publicPath: config.output.publicPath,
+//   stats: {
+//     colors: true
+//   }
+// }))
+// app.use(webpackHotMiddleware(compile))
 
-app.use(webpackDevMiddleware(compile, {
-  noInfo: true,
-  quiet: false,
-  publicPath: config.output.publicPath,
-  stats: {
-    colors: true
-  }
-}))
-app.use(webpackHotMiddleware(compile))
-app.use('/graphql', apolloServer({
+addMockFunctionsToSchema({
   schema,
-  // resolvers,
   mocks,
-  graphiql: true,
-  pretty: true
-}))
-app.use('/images', express.static('public/images'))
-app.use('*', express.static('public'))
-app.listen(3000, () => console.log('listening on port 3000'))
+  preserveResolvers: true
+})
+
+app.use(
+  '/graphql',
+  bodyParser.json(),
+  apolloExpress({ schema })
+)
+
+app.use(
+  '/graphiql',
+  graphiqlExpress({ endpointURL: '/graphql' })
+)
+
+// app.use('/images', express.static('public/images'))
+// app.use('*', express.static('public'))
+app.listen(port, () => console.log(`graphql server listen on ${port}`))

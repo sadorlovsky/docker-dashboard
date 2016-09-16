@@ -6,7 +6,7 @@ const resolvers = {
     container (_, { id }) {
       return api.getContainerById(id)
     },
-    containerList (root) {
+    containerList () {
       return api.getContainerList()
         .then(containers => {
           return containers.map(c => api.getContainerById(c.Id))

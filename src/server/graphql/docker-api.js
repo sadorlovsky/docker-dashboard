@@ -35,8 +35,20 @@ const getImageByName = name => {
   .catch(err => console.error(err))
 }
 
+const stopContainer = id => {
+  return got.post(`unix:/var/run/docker.sock:/containers/${id}/stop`)
+    .then(res => res.statusCode)
+}
+
+const startContainer = id => {
+  return got.post(`unix:/var/run/docker.sock:/containers/${id}/start`)
+    .then(res => res.statusCode)
+}
+
 export default {
   getContainerById,
   getContainerList,
-  getImageByName
+  getImageByName,
+  stopContainer,
+  startContainer
 }

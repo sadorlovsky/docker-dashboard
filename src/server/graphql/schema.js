@@ -7,6 +7,7 @@ const schema = [`
     name: String!
     image: Image!
     running: Boolean!
+    command: String
   }
 
   type Image {
@@ -15,12 +16,20 @@ const schema = [`
   }
 
   type Query {
+    imageList: [Image]
+    image(id: String!): Image
     containerList: [Container]
     container(id: String!): Container
   }
 
+  type Mutation {
+    stopContainer(id: String!): Container
+    startContainer(id: String!): Container
+  }
+
   schema {
     query: Query
+    mutation: Mutation
   }
 `]
 
