@@ -25,6 +25,7 @@ const schema = [`
   type Mutation {
     stopContainer(id: String!): Container
     startContainer(id: String!): Container
+    restartContainer(id: String!): Container
   }
 
   schema {

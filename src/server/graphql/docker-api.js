@@ -45,10 +45,16 @@ const startContainer = id => {
     .then(res => res.statusCode)
 }
 
+const restartContainer = id => {
+  return got.post(`unix:/var/run/docker.sock:/containers/${id}/restart`)
+    .then(res => res.statusCode)
+}
+
 export default {
   getContainerById,
   getContainerList,
   getImageByName,
   stopContainer,
-  startContainer
+  startContainer,
+  restartContainer
 }

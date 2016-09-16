@@ -23,6 +23,10 @@ const resolvers = {
     startContainer (_, { id }) {
       return api.startContainer(id)
         .then(() => api.getContainerById(id))
+    },
+    restartContainer (_, { id }) {
+      return api.restartContainer(id)
+        .then(() => api.getContainerById(id))
     }
   },
   Container: {
