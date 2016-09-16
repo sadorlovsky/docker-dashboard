@@ -1,47 +1,24 @@
 const path = require('path')
-const webpack = require('webpack')
-const cssnext = require('postcss-cssnext')
-const fontMagician = require('postcss-font-magician')
-const lost = require('lost')
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client?reload=true',
-    './src/client/index'
+    './src/client/index.js'
   ],
   output: {
-    path: path.resolve('dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: './dist/',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
-        include: [path.resolve('src', 'client')],
-        loaders: ['babel']
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      },
-      {
-        test: /\.sss$/,
-        include: [path.resolve('src', 'client')],
-        loader: 'style-loader?sourceMap!css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss-loader?parser=sugarss'
+        loader: 'babel?plugins=react-hot-loader/babel',
+        include: [
+          path.join(__dirname, 'src')
+        ]
       }
     ]
-  },
-  postcss () {
-    return [
-      cssnext,
-      fontMagician,
-      lost
-    ]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  }
 }
