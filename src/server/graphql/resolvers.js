@@ -15,6 +15,16 @@ const resolvers = {
         .catch(err => console.error(err))
     }
   },
+  Mutation: {
+    stopContainer (_, { id }) {
+      return api.stopContainer(id)
+        .then(() => api.getContainerById(id))
+    },
+    startContainer (_, { id }) {
+      return api.startContainer(id)
+        .then(() => api.getContainerById(id))
+    }
+  },
   Container: {
     image ({ imageName }) {
       return api.getImageByName(imageName)
