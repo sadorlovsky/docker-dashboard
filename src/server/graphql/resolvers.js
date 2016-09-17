@@ -13,6 +13,17 @@ const resolvers = {
         })
         .then(promises => Promise.all(promises))
         .catch(err => console.error(err))
+    },
+    image (_, { id }) {
+      return api.getImage(id)
+    },
+    imageList () {
+      return api.getImageList()
+        .then(images => {
+          return images.map(i => api.getImage(i.Id))
+        })
+        .then(promises => Promise.all(promises))
+        .catch(err => console.error(err))
     }
   },
   Mutation: {
@@ -31,7 +42,7 @@ const resolvers = {
   },
   Container: {
     image ({ imageName }) {
-      return api.getImageByName(imageName)
+      return api.getImage(imageName)
     }
   }
 }
