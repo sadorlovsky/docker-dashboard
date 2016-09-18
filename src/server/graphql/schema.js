@@ -1,4 +1,5 @@
 import { makeExecutableSchema } from 'graphql-tools'
+import { pubsub } from './subscriptions'
 import resolvers from './resolvers'
 
 const schema = [`
