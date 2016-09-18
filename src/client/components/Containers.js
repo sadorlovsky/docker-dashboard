@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { shorten } from '../helpers'
 
 const MyQuery = gql`
   query MyQuery {
@@ -9,10 +10,17 @@ const MyQuery = gql`
       name,
       image {
         name
-      }
+      },
+      running
     }
   }
 `
+
+const style = {
+  width: '200px',
+  border: '1px solid #000',
+  padding: '10px'
+}
 
 const Containers = ({ loading, data }) => {
   if (loading) {
@@ -20,10 +28,11 @@ const Containers = ({ loading, data }) => {
   }
   const containers = data.containerList && data.containerList.map(c => {
     return (
-      <div key={c.id}>
-        <div>id: {c.id}</div>
+      <div style={style} key={c.id}>
+        <div>id: {shorten(c.id)}</div>
         <div>name: {c.name}</div>
         <div>image: {c.image.name}</div>
+        <div>{c.running ? 'running' : 'not running'}</div>
       </div>
     )
   })
@@ -32,8 +41,4 @@ const Containers = ({ loading, data }) => {
   )
 }
 
-export default graphql(MyQuery, {
-  options: {
-    pollInterval: 10000
-  }
-})(Containers)
+export default graphql(MyQuery)(Containers)

@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-module.exports = {
+export default {
   devtool: 'source-map',
   entry: [
     'react-hot-loader/patch',
@@ -22,6 +22,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
       }
     ]
   }
