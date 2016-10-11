@@ -30,7 +30,7 @@ const app = express()
 addMockFunctionsToSchema({
   schema,
   mocks,
-  preserveResolvers: true
+  preserveResolvers: false
 })
 
 app.use(cors())

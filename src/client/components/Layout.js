@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './Header'
+import Footer from './Footer'
 import Containers from './Containers'
 
 const Content = props => (
@@ -14,6 +15,7 @@ const Layout = () => (
     <Content>
       <Containers />
     </Content>
+    <Footer />
   </div>
 )
 

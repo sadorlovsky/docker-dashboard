@@ -28,5 +28,11 @@ export default {
         loader: 'style!css'
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
+  },
+  node: {
+    fs: 'empty'
   }
 }

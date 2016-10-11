@@ -6,8 +6,8 @@ const style = {
   padding: '25px'
 }
 
-const Header = () => (
-  <div style={style}>Header</div>
+const Footer = () => (
+  <div style={style}>Footer</div>
 )
 
-export default Header
+export default Footer
