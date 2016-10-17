@@ -17,11 +17,15 @@ const MyQuery = gql`
   }
 `
 
-const Container = ({ data: { loading, container } }) => {
+const ContainerDetail = ({ data: { loading, container } }) => {
   return (
     loading
     ? <Spinner color='#26A65B' size='16px' margin='4px' />
-    : <div>{container.name}</div>
+    : (
+      <div>
+        {container.name}
+      </div>
+    )
     // <Cond value={container}>
     //   {[not(isUndefined), <div>{container.name}</div>]}
     //   {[T, <div>loading</div>]}
@@ -37,4 +41,4 @@ export default graphql(MyQuery, {
       }
     }
   }
-})(Container)
+})(ContainerDetail)
