@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import Spinner from 'halogen/PulseLoader'
-// import { Cond, T, isUndefined, not } from 'react-cond'
 
 const MyQuery = gql`
   query getContainer($id: String!) {
@@ -26,10 +25,6 @@ const ContainerDetail = ({ data: { loading, container } }) => {
         {container.name}
       </div>
     )
-    // <Cond value={container}>
-    //   {[not(isUndefined), <div>{container.name}</div>]}
-    //   {[T, <div>loading</div>]}
-    // </Cond>
   )
 }
 
