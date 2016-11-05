@@ -4,7 +4,10 @@ import colors from '../colors'
 const style = {
   background: colors.secondary,
   color: '#fff',
-  padding: '25px'
+  height: '70px',
+  display: 'flex',
+  alignItems: 'center',
+  paddingLeft: '20px'
 }
 
 const Header = () => (

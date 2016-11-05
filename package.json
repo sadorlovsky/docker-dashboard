@@ -24,6 +24,7 @@
     "graphql-tag": "^0.1.14",
     "graphql-tools": "^0.7.2",
     "halogen": "^0.2.0",
+    "kewler": "^1.0.8",
     "lodash": "^4.16.6",
     "lost": "^7.1.0",
     "lowdb": "^0.14.0",
