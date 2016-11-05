@@ -1,8 +1,9 @@
 import React from 'react'
-import { Label } from 'semantic-ui-react'
+import { Label, Popup } from 'semantic-ui-react'
 import { withRouter } from 'react-router'
 import { style } from 'glamor'
 import { shorten } from '../../helpers'
+import colors from '../../colors'
 import ContainerIcon from './ContainerIcon'
 
 const styles = style({
@@ -19,19 +20,31 @@ const styles = style({
   minWidth: '250px'
 })
 
+const clickHandler = (router, id) => {
+  if (!getSelection().toString()) {
+    router.push(`/container/${id}`)
+  }
+}
+
 const Container = ({ id, name, image, running, router }) => (
-  <div {...styles} onClick={() => router.push(`/container/${id}`)}>
+  <div {...styles} onClick={() => clickHandler(router, id)}>
     <div style={{ padding: '10px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ fontSize: '18px' }}>{name}</div>
-        <div>{running ? <Label circular empty color='green' /> : <Label circular empty color='grey' />}</div>
+        <div>
+          <Popup
+            trigger={running ? <Label circular empty color='green' /> : <Label circular empty color='grey' />}
+            content={running ? 'Container is running' : 'Container is stopped'}
+            inverted
+          />
+        </div>
       </div>
       <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <ContainerIcon name={image.name} />
         <div>{image.name}</div>
       </div>
     </div>
-    <div style={{ background: '#7C7287', color: '#FFF', textAlign: 'center', padding: '5px' }}>
+    <div style={{ background: colors.other, color: '#FFF', textAlign: 'center', padding: '5px' }}>
       {shorten(id)}
     </div>
   </div>
