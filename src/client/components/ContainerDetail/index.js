@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import Spinner from 'halogen/PulseLoader'
+import Loading from '../Loading'
 
 const MyQuery = gql`
   query getContainer($id: String!) {
@@ -19,7 +19,7 @@ const MyQuery = gql`
 const ContainerDetail = ({ data: { loading, container } }) => {
   return (
     loading
-    ? <Spinner color='#26A65B' size='16px' margin='4px' />
+    ? <Loading />
     : (
       <div>
         {container.name}

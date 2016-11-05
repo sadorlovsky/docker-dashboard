@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import Loading from '../Loading'
 import Container from './Container'
 
 const MyQuery = gql`
@@ -18,19 +19,14 @@ const MyQuery = gql`
 
 const ContainerList = ({ data: { loading, containerList } }) => {
   if (loading) {
-    return (<div>loading...</div>)
+    return (<Loading />)
   }
   const containers = containerList && containerList.filter(c => c.running).map(c => {
     return <Container key={c.id} {...c} />
   })
   return (
-    <div style={{ padding: '10px', backgroundColor: '#e2e1e0' }}>
-      <div>
-        Now running { containerList.filter(c => c.running).length } containers
-      </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
-        { containers }
-      </div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+      {containers}
     </div>
   )
 }

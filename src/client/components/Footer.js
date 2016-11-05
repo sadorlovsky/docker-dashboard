@@ -1,8 +1,8 @@
 import React from 'react'
+import colors from '../colors'
 
 const style = {
-  background: '#7C7287',
-  color: '#fff',
+  background: colors.main,
   padding: '25px'
 }
 
