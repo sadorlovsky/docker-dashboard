@@ -1,11 +1,11 @@
 import low from 'lowdb'
-import _ from 'lodash'
+import { times } from 'lodash'
 import faker from 'faker'
 
-const db = low()
+const db = low('db.json')
 
 db.defaults({
-  containers: _.times(
+  containers: times(
     faker.random.number({ min: 10, max: 50 }),
     () => ({
       id: faker.random.uuid(),
@@ -22,11 +22,20 @@ db.defaults({
 
 const mocks = {
   Query: () => ({
-    container (root, { id }) {
+    container (_, { id }) {
       return db.get('containers').find({ id }).value()
     },
-    containerList () {
-      return db.get('containers').value()
+    containerList (_, { filter }) {
+      let find = {}
+      if (filter === 'running') {
+        find = { running: true }
+      }
+      if (filter === 'stopped') {
+        find = { running: false }
+      }
+      return db.get('containers')
+        .filter(find)
+        .value()
     }
   })
 }
