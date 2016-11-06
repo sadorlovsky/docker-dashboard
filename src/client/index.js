@@ -2,21 +2,13 @@ import 'normalize.css'
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import App from './components/App'
-
-const networkInterface = createNetworkInterface({
-  uri: 'http://localhost:3000/graphql'
-})
-
-const client = new ApolloClient({
-  networkInterface
-})
+import { client, store } from './configure'
 
 render((
   <AppContainer>
-    <ApolloProvider client={client}>
+    <ApolloProvider store={store} client={client}>
       <App />
     </ApolloProvider>
   </AppContainer>
@@ -27,7 +19,7 @@ module.hot.accept('./components/App', () => {
 
   render((
     <AppContainer>
-      <ApolloProvider client={client}>
+      <ApolloProvider store={store} client={client}>
         <NextApp />
       </ApolloProvider>
     </AppContainer>
