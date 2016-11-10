@@ -20,6 +20,7 @@ const styles = style({
   minWidth: '250px'
 })
 
+/* eslint fp/no-mutating-methods: ["error", {"allowedObjects": ["router"]}] */
 const clickHandler = (router, id) => {
   if (!getSelection().toString()) {
     router.push(`/container/${id}`)
