@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import Loading from '../Loading'
+import Log from '../Log'
 
 const MyQuery = gql`
   query getContainer($id: String!) {
@@ -22,7 +23,7 @@ const ContainerDetail = ({ data: { loading, container } }) => {
     ? <Loading />
     : (
       <div>
-        {container.name}
+        <Log />
       </div>
     )
   )
