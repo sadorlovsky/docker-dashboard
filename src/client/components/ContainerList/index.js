@@ -1,25 +1,12 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import getContainers from '../../queries/getContainers'
 import Loading from '../Loading'
 import Container from './Container'
 import OptionsBar from './OptionsBar'
-
-const GetContainers = gql`
-  query GetContainers($filterType: String) {
-    containerList(filter: $filterType) {
-      id
-      name,
-      image {
-        name
-      },
-      running
-    }
-  }
-`
 
 const ContainerList = ({ data: { loading, containerList } }) => {
   if (loading) {
@@ -43,7 +30,7 @@ const enhancer = compose(
   connect(
     ({ rootReducer }) => ({ filter: rootReducer.filter })
   ),
-  graphql(GetContainers, {
+  graphql(getContainers, {
     options: ({ filter }) => ({
       variables: {
         filterType: filter
