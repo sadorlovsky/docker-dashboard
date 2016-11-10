@@ -36,6 +36,11 @@ const mocks = {
       return db.get('containers')
         .filter(find)
         .value()
+    },
+    containerTotal () {
+      return db.get('containers')
+        .size()
+        .value()
     }
   })
 }

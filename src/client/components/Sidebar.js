@@ -3,6 +3,8 @@ import { style } from 'glamor'
 import { Link } from 'react-router'
 import { Label } from 'semantic-ui-react'
 import { color, lightness } from 'kewler'
+import { graphql } from 'react-apollo'
+import getContainersTotal from '../queries/getContainersTotal'
 import colors from '../colors'
 
 const containerStyles = style({
@@ -34,7 +36,7 @@ const logoStyles = style({
   fontSize: '20px'
 })
 
-const Sidebar = () => (
+const Sidebar = ({ data }) => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
     <div {...logoStyles}>Docker Dashboard</div>
     <div {...containerStyles}>
@@ -45,7 +47,7 @@ const Sidebar = () => (
       </div>
       <div>
         <Link to='/containers' activeStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} {...linkStyles}>
-          Containers <Label horizontal>42</Label>
+          Containers <Label horizontal>{data.containerTotal}</Label>
         </Link>
       </div>
       <div>
@@ -62,4 +64,4 @@ const Sidebar = () => (
   </div>
 )
 
-export default Sidebar
+export default graphql(getContainersTotal)(Sidebar)

@@ -21,6 +21,7 @@ const schema = [`
     image(id: String!): Image
     containerList(filter: String): [Container]
     container(id: String!): Container
+    containerTotal: Int
   }
 
   type Mutation {
