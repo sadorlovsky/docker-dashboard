@@ -1,21 +1,8 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import getContainer from '../../queries/getContainer'
 import Loading from '../Loading'
 import Log from '../Log'
-
-const MyQuery = gql`
-  query getContainer($id: String!) {
-    container(id: $id) {
-      id
-      name,
-      image {
-        name
-      },
-      running
-    }
-  }
-`
 
 const ContainerDetail = ({ data: { loading, container } }) => {
   return (
@@ -23,13 +10,16 @@ const ContainerDetail = ({ data: { loading, container } }) => {
     ? <Loading />
     : (
       <div>
-        <Log />
+        <div>{container.id}</div>
+        <div>
+          <Log />
+        </div>
       </div>
     )
   )
 }
 
-export default graphql(MyQuery, {
+export default graphql(getContainer, {
   options ({ params: { id } }) {
     return {
       variables: {

@@ -2,6 +2,9 @@ import React from 'react'
 import { Label, Popup } from 'semantic-ui-react'
 import { withRouter } from 'react-router'
 import { style } from 'glamor'
+import { compose } from 'redux'
+import { withApollo } from 'react-apollo'
+import getContainer from '../../queries/getContainer'
 import { shorten } from '../../helpers'
 import colors from '../../colors'
 import ContainerIcon from './ContainerIcon'
@@ -20,35 +23,51 @@ const styles = style({
   minWidth: '250px'
 })
 
-/* eslint fp/no-mutating-methods: ["error", {"allowedObjects": ["router"]}] */
-const clickHandler = (router, id) => {
-  if (!getSelection().toString()) {
-    router.push(`/container/${id}`)
+const Container = ({ id, name, image, running, router, client }) => {
+  /* eslint fp/no-mutating-methods: ["error", {"allowedObjects": ["router"]}] */
+  const clickHandler = () => {
+    if (!getSelection().toString()) {
+      router.push(`/container/${id}`)
+    }
   }
-}
 
-const Container = ({ id, name, image, running, router }) => (
-  <div {...styles} onClick={() => clickHandler(router, id)}>
-    <div style={{ padding: '10px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div style={{ fontSize: '18px' }}>{name}</div>
-        <div>
-          <Popup
-            trigger={running ? <Label circular empty color='green' /> : <Label circular empty color='grey' />}
-            content={running ? 'Container is running' : 'Container is stopped'}
-            inverted
-          />
+  const hoverHandler = () => {
+    client.query({
+      query: getContainer,
+      variables: {
+        id
+      }
+    })
+  }
+
+  return (
+    <div {...styles} onMouseOver={hoverHandler} onClick={clickHandler}>
+      <div style={{ padding: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ fontSize: '18px' }}>{name}</div>
+          <div>
+            <Popup
+              trigger={running ? <Label circular empty color='green' /> : <Label circular empty color='grey' />}
+              content={running ? 'Container is running' : 'Container is stopped'}
+              inverted
+            />
+          </div>
+        </div>
+        <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <ContainerIcon name={image.name} />
+          <div>{image.name}</div>
         </div>
       </div>
-      <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <ContainerIcon name={image.name} />
-        <div>{image.name}</div>
+      <div style={{ background: colors.other, color: '#FFF', textAlign: 'center', padding: '5px' }}>
+        {shorten(id)}
       </div>
     </div>
-    <div style={{ background: colors.other, color: '#FFF', textAlign: 'center', padding: '5px' }}>
-      {shorten(id)}
-    </div>
-  </div>
+  )
+}
+
+const enhancer = compose(
+  withRouter,
+  withApollo
 )
 
-export default withRouter(Container)
+export default enhancer(Container)
