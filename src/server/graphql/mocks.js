@@ -1,6 +1,7 @@
 import low from 'lowdb'
 import { times } from 'lodash'
 import faker from 'faker'
+import { match, when } from 'match-when'
 
 const db = low('db.json')
 
@@ -26,15 +27,13 @@ const mocks = {
       return db.get('containers').find({ id }).value()
     },
     containerList (_, { filter }) {
-      let find = {}
-      if (filter === 'running') {
-        find = { running: true }
-      }
-      if (filter === 'stopped') {
-        find = { running: false }
-      }
+      const condition = match({
+        [when('running')]: { running: true },
+        [when('stopped')]: { running: false },
+        [when()]: {}
+      })(filter)
       return db.get('containers')
-        .filter(find)
+        .filter(condition)
         .value()
     },
     containerTotal () {
