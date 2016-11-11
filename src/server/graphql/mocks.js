@@ -1,23 +1,33 @@
 import low from 'lowdb'
 import { times } from 'lodash'
 import faker from 'faker'
+import moment from 'moment'
 import { match, when } from 'match-when'
 
-const db = low('db.json')
+const db = low()
 
 db.defaults({
   containers: times(
     faker.random.number({ min: 10, max: 50 }),
-    () => ({
-      id: faker.random.uuid(),
-      name: faker.helpers.slugify(faker.random.word()),
-      running: faker.helpers.randomize([true, false]),
-      command: faker.hacker.phrase(),
-      image: {
+    () => {
+      const running = faker.helpers.randomize([true, false])
+      const state = running ? 'running' : faker.helpers.randomize([
+        'created', 'restarting', 'paused', 'exited', 'dead'
+      ])
+      return {
         id: faker.random.uuid(),
-        name: faker.helpers.slugify(faker.random.word())
+        name: faker.helpers.slugify(faker.random.word()),
+        running,
+        command: faker.hacker.phrase(),
+        image: {
+          id: faker.random.uuid(),
+          name: faker.helpers.slugify(faker.random.word())
+        },
+        created: faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')),
+        state,
+        status: 'mocked status'
       }
-    })
+    }
   )
 }).value()
 

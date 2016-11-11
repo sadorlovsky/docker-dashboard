@@ -8,6 +8,9 @@ const schema = [`
     image: Image!
     running: Boolean!
     command: String
+    created: String!
+    state: String!
+    status: String!
   }
 
   type Image {

@@ -29,6 +29,7 @@
     "lost": "^7.1.1",
     "lowdb": "^0.14.0",
     "match-when": "^3.0.0",
+    "moment": "^2.16.0",
     "node-uuid": "^1.4.7",
     "normalize.css": "^5.0.0",
     "postcss-js": "^0.1.3",

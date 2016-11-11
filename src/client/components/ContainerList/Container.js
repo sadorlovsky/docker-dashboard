@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import { style } from 'glamor'
 import { compose } from 'redux'
 import { withApollo } from 'react-apollo'
+import moment from 'moment'
 import getContainer from '../../queries/getContainer'
 import { shorten } from '../../helpers'
 import colors from '../../colors'
@@ -23,7 +24,7 @@ const styles = style({
   minWidth: '250px'
 })
 
-const Container = ({ id, name, image, running, router, client }) => {
+const Container = ({ id, name, image, running, created, router, client }) => {
   /* eslint fp/no-mutating-methods: ["error", {"allowedObjects": ["router"]}] */
   const clickHandler = () => {
     if (!getSelection().toString()) {
@@ -57,6 +58,7 @@ const Container = ({ id, name, image, running, router, client }) => {
           <ContainerIcon name={image.name} />
           <div>{image.name}</div>
         </div>
+        <div>created {moment(created).fromNow()}</div>
       </div>
       <div style={{ background: colors.other, color: '#FFF', textAlign: 'center', padding: '5px' }}>
         {shorten(id)}
