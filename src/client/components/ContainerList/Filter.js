@@ -1,10 +1,8 @@
 import React from 'react'
-// import { browserHistory } from 'react-router'
 import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withApollo } from 'react-apollo'
-// import { push } from 'react-router-redux'
 import getContainers from '../../queries/getContainers'
 import { toogleFilter } from '../../actions'
 

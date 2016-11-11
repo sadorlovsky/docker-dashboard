@@ -42,7 +42,7 @@ const Sidebar = ({ data }) => (
     <div {...containerStyles}>
       <div>
         <Link to='/apps' activeStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} {...linkStyles}>
-          Apps <Label horizontal>42</Label>
+          Apps
         </Link>
       </div>
       <div>
@@ -52,12 +52,12 @@ const Sidebar = ({ data }) => (
       </div>
       <div>
         <Link to='/images' activeStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} {...linkStyles}>
-          Images <Label horizontal>42</Label>
+          Images
         </Link>
       </div>
       <div>
         <Link to='/volumes' activeStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} {...linkStyles}>
-          Volumes <Label horizontal>42</Label>
+          Volumes
         </Link>
       </div>
     </div>

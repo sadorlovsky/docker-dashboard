@@ -1,6 +1,6 @@
 import React from 'react'
-import { Input } from 'semantic-ui-react'
 import Filter from './Filter'
+import TextFilter from './TextFilter'
 import View from './View'
 
 const OptionsBar = () => (
@@ -9,7 +9,7 @@ const OptionsBar = () => (
       <Filter />
     </div>
     <div style={{ width: '200px', marginRight: '20px' }}>
-      <Input fluid placeholder='Filter by id, name or image...' />
+      <TextFilter />
     </div>
     <div>
       <View />
