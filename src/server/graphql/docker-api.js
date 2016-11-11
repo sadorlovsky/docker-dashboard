@@ -19,7 +19,7 @@ const getContainerById = id => {
 }
 
 const getContainerList = () => {
-  return fetch(`/containers/json`)
+  return fetch('/containers/json')
     .then(res => res.body)
     .catch(err => console.error(err))
 }
@@ -37,7 +37,7 @@ const getImage = nameOrId => {
 }
 
 const getImageList = () => {
-  return fetch(`/images/json`)
+  return fetch('/images/json')
     .then(res => res.body)
     .catch(err => console.error(err))
 }

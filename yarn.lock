@@ -206,11 +206,10 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-apollo-client@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.5.0.tgz#b9ec43a8e621461ff24c9fddba21446d8e1d5aa3"
+apollo-client@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.5.2.tgz#ed7d13f9e79c031063b4c76490ca09698d879115"
   dependencies:
-    es6-promise "^4.0.3"
     graphql-anywhere "^0.2.4"
     graphql-tag "^0.1.13"
     lodash.assign "^4.0.8"
@@ -386,12 +385,12 @@ autoprefixer@^6.3.1:
     postcss "^5.2.2"
     postcss-value-parser "^3.2.3"
 
-autoprefixer@^6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.5.2.tgz#37cc910c5e1139ad341a006d5f6d441a380b742b"
+autoprefixer@^6.5.3:
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.5.3.tgz#2d853af66d04449fcf50db3066279ab54c3e4b01"
   dependencies:
     browserslist "~1.4.0"
-    caniuse-db "^1.0.30000576"
+    caniuse-db "^1.0.30000578"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^5.2.5"
@@ -1288,9 +1287,9 @@ caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000540:
   version "1.0.30000553"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000553.tgz#e7e908f43b788e6ac78fc161fedc4626d6a39f24"
 
-caniuse-db@^1.0.30000576:
-  version "1.0.30000576"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000576.tgz#c0623997f6b1ff3b56fa33b352fe44874f61c0ce"
+caniuse-db@^1.0.30000578:
+  version "1.0.30000579"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000579.tgz#9018ef6f0ce61977525ae69c440e538e6ffccf35"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -1873,10 +1872,6 @@ es6-promise@^3.2.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
 
-es6-promise@^4.0.3:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.0.5.tgz#7882f30adde5b240ccfa7f7d78c548330951ae42"
-
 es6-set@~0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/es6-set/-/es6-set-0.1.4.tgz#9516b6761c2964b92ff479456233a247dc707ce8"
@@ -1928,9 +1923,9 @@ eslint-import-resolver-node@^0.2.0:
     object-assign "^4.0.1"
     resolve "^1.1.6"
 
-eslint-module-utils@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-1.0.0.tgz#c4a57fd3a53efd8426cc2d5550aadab9bbd05fd0"
+eslint-module-utils@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.0.0.tgz#a6f8c21d901358759cdc35dbac1982ae1ee58bce"
   dependencies:
     debug "2.2.0"
     pkg-dir "^1.0.0"
@@ -1943,24 +1938,24 @@ eslint-plugin-fp@^2.2.0:
     lodash "^4.13.1"
     req-all "^0.1.0"
 
-eslint-plugin-import@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.1.0.tgz#20fe254aa7dac0d9fe617979f14b59f0f762e1b4"
+eslint-plugin-import@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.2.0.tgz#72ba306fad305d67c4816348a4699a4229ac8b4e"
   dependencies:
     builtin-modules "^1.1.1"
     contains-path "^0.1.0"
     debug "^2.2.0"
     doctrine "1.5.0"
     eslint-import-resolver-node "^0.2.0"
-    eslint-module-utils "^1.0.0"
+    eslint-module-utils "^2.0.0"
     has "^1.0.1"
     lodash.cond "^4.3.0"
     minimatch "^3.0.3"
     pkg-up "^1.0.0"
 
-eslint-plugin-react@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-6.5.0.tgz#93f894b6469974304609e59c8983a6a3dc81738c"
+eslint-plugin-react@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-6.6.0.tgz#91ceecefa8a22d8f5d23ef9a839516a7d9fa63a1"
   dependencies:
     doctrine "^1.2.2"
     jsx-ast-utils "^1.3.3"
@@ -2536,9 +2531,9 @@ graphql-tag@^0.1.16:
   version "0.1.16"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-0.1.16.tgz#dc91350b19093b4771a013b55f32ee2290567c4e"
 
-graphql-tools@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-0.8.0.tgz#5708257a398f9a3ff6f9d6e362aac184cd4323a0"
+graphql-tools@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-0.8.1.tgz#e03265435a48bc22d2ec94084a068586ff1b2080"
   dependencies:
     deprecated-decorator "^0.1.6"
     lodash "^4.3.0"
@@ -2546,9 +2541,15 @@ graphql-tools@^0.8.0:
   optionalDependencies:
     typed-graphql "^1.0.2"
 
-graphql@^0.7.0, graphql@^0.7.2:
+graphql@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.7.2.tgz#cc894a32823399b8a0cb012b9e9ecad35cd00f72"
+  dependencies:
+    iterall "1.0.2"
+
+graphql@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.8.0.tgz#ef76ac5785a808c3f25ba3daa4a59a603b0c4cfe"
   dependencies:
     iterall "1.0.2"
 
@@ -3339,9 +3340,9 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0:
   dependencies:
     js-tokens "^1.0.1"
 
-lost@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/lost/-/lost-7.1.0.tgz#f85d176a443dbdf1c7ea1d260772d3ea460f5efc"
+lost@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/lost/-/lost-7.1.1.tgz#6f757f3778badd193feff25c6bfb15f6e8fd10e0"
   dependencies:
     object-assign "^4.1.0"
     postcss "^5.1.2"
@@ -5036,9 +5037,9 @@ style-loader@^0.13.1:
   dependencies:
     loader-utils "^0.2.7"
 
-subscriptions-transport-ws@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.3.0.tgz#bcf7dec388f5dd8ab9eab67c1d953c651bdd723a"
+subscriptions-transport-ws@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.3.1.tgz#b263d0147d47a1d109487633cf940a7907a9bdc0"
   dependencies:
     backo2 "^1.0.2"
     graphql-subscriptions "^0.2.0"
