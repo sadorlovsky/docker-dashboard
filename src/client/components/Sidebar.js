@@ -1,7 +1,7 @@
 import React from 'react'
 import { style } from 'glamor'
 import { Link } from 'react-router'
-import { Label } from 'semantic-ui-react'
+import { Label, Icon } from 'semantic-ui-react'
 import { color, lightness } from 'kewler'
 import { graphql } from 'react-apollo'
 import getContainersTotal from '../queries/getContainersTotal'
@@ -58,6 +58,11 @@ const Sidebar = ({ data }) => (
       <div>
         <Link to='/volumes' activeStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} {...linkStyles}>
           Volumes
+        </Link>
+      </div>
+      <div>
+        <Link to='/settings' activeStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} {...linkStyles}>
+          Settings <Icon name='setting' size='large' />
         </Link>
       </div>
     </div>
