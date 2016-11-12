@@ -24,7 +24,7 @@ const styles = style({
   minWidth: '250px'
 })
 
-const Container = ({ id, name, image, running, created, router, client }) => {
+const Container = ({ id, name, image, running, created, state, status, router, client }) => {
   /* eslint fp/no-mutating-methods: ["error", {"allowedObjects": ["router"]}] */
   const clickHandler = () => {
     if (!getSelection().toString()) {
@@ -54,9 +54,14 @@ const Container = ({ id, name, image, running, created, router, client }) => {
             />
           </div>
         </div>
-        <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <ContainerIcon name={image.name} />
-          <div>{image.name}</div>
+        <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div>
+            <div>{image.name}</div>
+            <ContainerIcon name={image.name} />
+          </div>
+          <div>
+            {state}; {status}
+          </div>
         </div>
         <div>created {moment(created).fromNow()}</div>
       </div>
