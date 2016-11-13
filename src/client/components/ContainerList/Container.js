@@ -5,6 +5,7 @@ import { style } from 'glamor'
 import { compose } from 'redux'
 import { withApollo } from 'react-apollo'
 import moment from 'moment'
+import { Cond, eq, T } from 'react-cond'
 import getContainer from '../../queries/getContainer'
 import { shorten } from '../../helpers'
 import colors from '../../colors'
@@ -49,7 +50,7 @@ const Container = ({ id, name, image, running, created, state, status, router, c
           <div>
             <Popup
               trigger={running ? <Label circular empty color='green' /> : <Label circular empty color='grey' />}
-              content={running ? 'Container is running' : 'Container is stopped'}
+              content={running ? 'Container is running' : `Container is ${state}`}
               inverted
             />
           </div>
@@ -60,7 +61,7 @@ const Container = ({ id, name, image, running, created, state, status, router, c
             <ContainerIcon name={image.name} />
           </div>
           <div>
-            {state}; {status}
+            {status}
           </div>
         </div>
         <div>created {moment(created).fromNow()}</div>
