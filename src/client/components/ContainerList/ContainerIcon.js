@@ -1,12 +1,12 @@
 import React from 'react'
+import { image } from 'faker'
 
 const resolve = name => {
-  // return require(`svg-url?noquotes!../icons/${name}.svg`)
-  return require('svg-url?noquotes!../icons/alpine-linux.svg')
+  return require(`svg-url?noquotes!../icons/${name}.svg`)
 }
 
 const ContainerIcon = ({ name }) => (
-  <img src={resolve(name)} width='50' height='50' />
+  <img src={image.image()} style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
 )
 
 export default ContainerIcon
