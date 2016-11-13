@@ -6,6 +6,11 @@ import { ApolloProvider } from 'react-apollo'
 import App from './components/App'
 import { client, store } from './configure'
 
+if (process.env.NODE_ENV !== 'production') {
+  const { whyDidYouUpdate } = require('why-did-you-update')
+  whyDidYouUpdate(React)
+}
+
 render((
   <AppContainer>
     <ApolloProvider store={store} client={client}>

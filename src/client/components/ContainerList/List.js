@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
+import { withRouter } from 'react-router'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import getContainers from '../../queries/getContainers'
@@ -7,7 +8,7 @@ import Loading from '../Loading'
 import Container from './Container'
 import OptionsBar from './OptionsBar'
 
-const ContainerList = ({ data: { loading, containerList } }) => {
+const List = ({ data: { loading, containerList } }) => {
   if (loading) {
     return (<Loading />)
   }
@@ -25,11 +26,9 @@ const ContainerList = ({ data: { loading, containerList } }) => {
 }
 
 const enhancer = compose(
+  withRouter,
   connect(
-    ({ rootReducer }) => ({
-      filter: rootReducer.filter,
-      view: rootReducer.view
-    })
+    ({ rootReducer }) => ({ filter: rootReducer.filter })
   ),
   graphql(getContainers, {
     options: ({ filter }) => ({
@@ -40,4 +39,4 @@ const enhancer = compose(
   })
 )
 
-export default enhancer(ContainerList)
+export default enhancer(List)

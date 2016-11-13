@@ -44,6 +44,7 @@
     "react-router-redux": "^4.0.7",
     "react-svg": "^1.1.5",
     "rebass": "^0.3.3",
+    "recompose": "^0.20.2",
     "redux": "^3.6.0",
     "redux-actions": "^0.13.0",
     "semantic-ui-react": "^0.60.4",
@@ -69,6 +70,7 @@
     "style-loader": "^0.13.1",
     "svg-url-loader": "^1.1.0",
     "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.10"
+    "webpack-dev-server": "^2.1.0-beta.10",
+    "why-did-you-update": "0.0.8"
   }
 }
