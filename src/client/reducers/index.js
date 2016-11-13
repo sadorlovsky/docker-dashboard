@@ -1,16 +1,20 @@
 import { handleActions } from 'redux-actions'
-import { toggleId, toogleFilter } from '../actions'
+import { toggleId, toggleFilter, toggleView } from '../actions'
 
 const reducer = handleActions({
   [toggleId]: state => ({
     ...state, showFullId: !state.showFullId
   }),
-  [toogleFilter]: (state, action) => ({
+  [toggleFilter]: (state, action) => ({
     ...state, filter: action.payload
+  }),
+  [toggleView]: (state, action) => ({
+    ...state, view: action.payload
   })
 }, {
   filter: 'running',
-  showFullId: true
+  showFullId: true,
+  view: 'grid'
 })
 
 export default reducer

@@ -4,13 +4,9 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withApollo } from 'react-apollo'
 import getContainers from '../../queries/getContainers'
-import { toogleFilter } from '../../actions'
+import { toggleFilter } from '../../actions'
 
 const Filter = ({ filter, onChangeFilter, client }) => {
-  const changeFilterHandler = type => {
-    onChangeFilter(type)
-  }
-
   const hoverHandle = type => {
     client.query({
       query: getContainers,
@@ -24,21 +20,21 @@ const Filter = ({ filter, onChangeFilter, client }) => {
     <Button.Group fluid>
       <Button
         onMouseOver={() => hoverHandle('running')}
-        onClick={() => changeFilterHandler('running')}
+        onClick={() => onChangeFilter('running')}
         active={filter === 'running'}
       >
           Running
         </Button>
       <Button
         onMouseOver={() => hoverHandle('stopped')}
-        onClick={() => changeFilterHandler('stopped')}
+        onClick={() => onChangeFilter('stopped')}
         active={filter === 'stopped'}
       >
           Stopped
         </Button>
       <Button
         onMouseOver={() => hoverHandle('all')}
-        onClick={() => changeFilterHandler('all')}
+        onClick={() => onChangeFilter('all')}
         active={filter === 'all'}
       >
           All
@@ -48,13 +44,12 @@ const Filter = ({ filter, onChangeFilter, client }) => {
 }
 
 const enhancer = compose(
-  // withRouter,
   withApollo,
   connect(
     ({ rootReducer }) => ({ filter: rootReducer.filter }),
     dispatch => ({
       onChangeFilter (type) {
-        dispatch(toogleFilter(type))
+        dispatch(toggleFilter(type))
       }
     })
   )
