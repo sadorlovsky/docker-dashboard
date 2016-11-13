@@ -7,11 +7,11 @@ export default {
     './src/client/index.js'
   ],
   output: {
-    path: './dist/',
+    path: '/dist',
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         loader: 'babel?plugins=react-hot-loader/babel',
