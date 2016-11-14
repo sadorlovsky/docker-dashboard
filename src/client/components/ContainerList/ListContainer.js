@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import { style } from 'glamor'
 import { compose } from 'redux'
 import { withApollo } from 'react-apollo'
+import { pure } from 'recompose'
 import moment from 'moment'
 import getContainer from '../../queries/getContainer'
 import { shorten } from '../../helpers'
@@ -73,6 +74,7 @@ const Container = ({ id, name, image, running, created, state, status, router, c
 }
 
 const enhancer = compose(
+  pure,
   withRouter,
   withApollo
 )

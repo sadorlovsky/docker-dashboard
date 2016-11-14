@@ -48,4 +48,4 @@ app.use(
 
 // app.use('/images', express.static('public/images'))
 // app.use('*', express.static('public'))
-app.listen(port, () => console.log(`graphql server listen on ${port}`))
+app.listen(port, () => console.log(`${new Date()} graphql server listen on ${port}`))

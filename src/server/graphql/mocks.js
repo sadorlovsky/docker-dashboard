@@ -51,6 +51,20 @@ const mocks = {
         .size()
         .value()
     }
+  }),
+  Mutation: () => ({
+    stopContainer (_, { id }) {
+      return db.get('containers')
+        .find({ id })
+        .assign({ running: false, state: 'exited' })
+        .value()
+    },
+    startContainer (_, { id }) {
+      return db.get('containers')
+        .find({ id })
+        .assign({ running: true, state: 'running' })
+        .value()
+    }
   })
 }
 
