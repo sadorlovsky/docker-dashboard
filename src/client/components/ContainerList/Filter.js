@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { toggleFilter } from '../../actions'
+import { toggleStateFilter } from '../../actions'
 
 const Filter = ({ filter, onChangeFilter }) => {
   return (
@@ -29,10 +29,10 @@ const Filter = ({ filter, onChangeFilter }) => {
 }
 
 const enhancer = connect(
-  ({ rootReducer }) => ({ filter: rootReducer.filter }),
+  ({ rootReducer }) => ({ filter: rootReducer.stateFilter }),
   dispatch => ({
     onChangeFilter (type) {
-      dispatch(toggleFilter(type))
+      dispatch(toggleStateFilter(type))
     }
   })
 )

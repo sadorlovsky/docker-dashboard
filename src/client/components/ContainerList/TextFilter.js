@@ -1,19 +1,25 @@
 import React from 'react'
 import { Input } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { changeTextFilter } from '../../actions'
 
-const inputHander = e => {
-  const value = e.target.value
-  console.log(value)
-}
-
-const TextFilter = () => {
+const TextFilter = ({ onChangeFilter }) => {
   return (
     <Input
       fluid
       placeholder='Filter by id, name or image...'
-      onInput={inputHander}
+      onInput={e => onChangeFilter(e.target.value)}
     />
   )
 }
 
-export default TextFilter
+const enhancer = connect(
+  ({ rootReducer }) => ({ textFilter: rootReducer.textFilter }),
+  dispatch => ({
+    onChangeFilter (text) {
+      dispatch(changeTextFilter(text))
+    }
+  })
+)
+
+export default enhancer(TextFilter)
