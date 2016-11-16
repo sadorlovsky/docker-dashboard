@@ -3,24 +3,24 @@ import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { toggleStateFilter } from '../../actions'
 
-const Filter = ({ filter, onChangeFilter }) => {
+const StateFilter = ({ stateFilter, onChangeFilter }) => {
   return (
     <Button.Group fluid>
       <Button
         onClick={() => onChangeFilter('running')}
-        active={filter === 'running'}
+        active={stateFilter === 'running'}
       >
           Running
         </Button>
       <Button
         onClick={() => onChangeFilter('stopped')}
-        active={filter === 'stopped'}
+        active={stateFilter === 'stopped'}
       >
           Stopped
         </Button>
       <Button
         onClick={() => onChangeFilter('all')}
-        active={filter === 'all'}
+        active={stateFilter === 'all'}
       >
           All
         </Button>
@@ -29,7 +29,7 @@ const Filter = ({ filter, onChangeFilter }) => {
 }
 
 const enhancer = connect(
-  ({ rootReducer }) => ({ filter: rootReducer.stateFilter }),
+  ({ rootReducer }) => ({ stateFilter: rootReducer.stateFilter }),
   dispatch => ({
     onChangeFilter (type) {
       dispatch(toggleStateFilter(type))
@@ -37,4 +37,4 @@ const enhancer = connect(
   })
 )
 
-export default enhancer(Filter)
+export default enhancer(StateFilter)
