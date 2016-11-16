@@ -4,11 +4,11 @@ export default gql`
   query getContainer($id: String!) {
     container(id: $id) {
       id
-      name,
+      name
       image {
         name
-      },
-      running,
+      }
+      running
       state
     }
   }

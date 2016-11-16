@@ -1,16 +1,16 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query getContainers($filterType: String) {
-    containerList(filter: $filterType) {
+  query getContainers {
+    containerList {
       id
-      name,
+      name
       image {
         name
-      },
-      running,
-      created,
-      state,
+      }
+      running
+      created
+      state
       status
     }
   }

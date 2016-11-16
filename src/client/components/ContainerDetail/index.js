@@ -14,16 +14,16 @@ const ContainerDetail = ({ data: { loading, container }, start, stop }) => {
     loading
     ? <Loading />
     : (
-    <div>
-      <div>{container.id}</div>
-      <div>{container.running.toString()}</div>
-      <div>{container.state}</div>
-      {container.running ? (
-        <Button onClick={stop}>stop</Button>
+      <div>
+        <div>{container.id}</div>
+        <div>{container.running.toString()}</div>
+        <div>{container.state}</div>
+        {container.running ? (
+          <Button onClick={stop}>stop</Button>
       ) : (
-      <Button onClick={start}>start</Button>
+        <Button onClick={start}>start</Button>
       )}
-    </div>
+      </div>
     )
   )
 }
@@ -35,21 +35,21 @@ const enhancer = compose(
       return {
         variables: {
           id
-        },
-        updateQueries: {
-          getContainers: (prev, { mutationResult }) => {
-            const container = L.find(
-              R.whereEq({ id: mutationResult.data.startContainer.id })
-            )
-            const data = L.remove(
-              container,
-              prev.containerList
-            )
-            return {
-              containerList: data
-            }
-          }
         }
+        // updateQueries: {
+        //   getContainers: (prev, { mutationResult }) => {
+        //     const container = L.find(
+        //       R.whereEq({ id: mutationResult.data.startContainer.id })
+        //     )
+        //     const data = L.remove(
+        //       container,
+        //       prev.containerList
+        //     )
+        //     return {
+        //       containerList: data
+        //     }
+        //   }
+        // }
       }
     }
   }),
@@ -59,12 +59,12 @@ const enhancer = compose(
       return {
         variables: {
           id
-        },
-        updateQueries: {
-          getContainers: (prev, { mutationResult, queryVariables }) => {
-            console.log('STOP!', queryVariables)
-          }
         }
+        // updateQueries: {
+        //   getContainers: (prev, { mutationResult, queryVariables }) => {
+        //     console.log('STOP!', queryVariables)
+        //   }
+        // }
       }
     }
   }),

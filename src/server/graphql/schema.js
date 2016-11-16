@@ -21,7 +21,7 @@ const schema = [`
   type Query {
     imageList: [Image]
     image(id: String!): Image
-    containerList(filter: String): [Container]
+    containerList: [Container]
     container(id: String!): Container
     containerTotal: Int
   }
