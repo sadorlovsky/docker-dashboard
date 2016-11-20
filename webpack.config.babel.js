@@ -14,18 +14,18 @@ export default {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel?plugins=react-hot-loader/babel',
+        loader: 'babel-loader?plugins=react-hot-loader/babel',
         include: [
           path.join(__dirname, 'src')
         ]
       },
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json-loader'
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style-loader!css-loader'
       }
     ]
   },

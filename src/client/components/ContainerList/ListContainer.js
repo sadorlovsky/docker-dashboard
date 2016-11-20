@@ -9,7 +9,6 @@ import moment from 'moment'
 import getContainer from '../../queries/getContainer'
 import { shorten } from '../../helpers'
 import colors from '../../colors'
-import ContainerIcon from './ContainerIcon'
 
 const styles = style({
   background: '#fff',
@@ -58,7 +57,6 @@ const Container = ({ id, name, image, running, created, state, status, router, c
         <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>
             <div>{image.name}</div>
-            <ContainerIcon name={image.name} />
           </div>
           <div>
             {status}

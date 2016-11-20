@@ -9,7 +9,6 @@ import moment from 'moment'
 import getContainer from '../../queries/getContainer'
 import { shorten } from '../../helpers'
 import colors from '../../colors'
-import ContainerIcon from './ContainerIcon'
 
 const styles = style({
   background: '#fff',

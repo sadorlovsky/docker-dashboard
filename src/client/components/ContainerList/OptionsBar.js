@@ -8,7 +8,7 @@ const OptionsBar = () => (
     <div style={{ width: '262.75px', marginRight: '20px' }}>
       <StateFilter />
     </div>
-    <div style={{ width: '200px', marginRight: '20px' }}>
+    <div style={{ width: '262.75px', marginRight: '20px' }}>
       <TextFilter />
     </div>
     <div>

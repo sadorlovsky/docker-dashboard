@@ -1,14 +1,21 @@
 import React from 'react'
-import { Input } from 'semantic-ui-react'
+import { Input, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { changeTextFilter } from '../../actions'
+import { changeTextFilter, clearTextFilter } from '../../actions'
 
-const TextFilter = ({ onChangeFilter }) => {
+const TextFilter = ({ textFilter, onChangeFilter, onClearClick }) => {
   return (
     <Input
       fluid
       placeholder='Filter by id, name or image...'
-      onInput={e => onChangeFilter(e.target.value)}
+      onChange={e => onChangeFilter(e.target.value)}
+      action={(
+        <Button icon disabled={textFilter === ''} onClick={onClearClick}>
+          <Icon name='remove' />
+        </Button>
+      )}
+      actionPosition='right'
+      value={textFilter}
     />
   )
 }
@@ -18,6 +25,9 @@ const enhancer = connect(
   dispatch => ({
     onChangeFilter (text) {
       dispatch(changeTextFilter(text))
+    },
+    onClearClick () {
+      dispatch(clearTextFilter())
     }
   })
 )
