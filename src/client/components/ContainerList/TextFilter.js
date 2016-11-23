@@ -14,7 +14,7 @@ const TextFilter = ({ textFilter, onChangeFilter, onClearClick }) => {
           <Icon name='remove' />
         </Button>
       )}
-      actionPosition='right'
+      labelPosition='right'
       value={textFilter}
     />
   )
