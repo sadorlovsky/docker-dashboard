@@ -19,6 +19,7 @@ const reducer = handleActions({
   })
 }, {
   stateFilter: 'running',
+  textFilter: '',
   showFullId: true,
   view: 'grid'
 })
