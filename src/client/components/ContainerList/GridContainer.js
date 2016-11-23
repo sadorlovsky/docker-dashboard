@@ -6,6 +6,7 @@ import { compose } from 'redux'
 import { withApollo } from 'react-apollo'
 import { pure } from 'recompose'
 import moment from 'moment'
+import { toNumber } from 'lodash'
 import getContainer from '../../queries/getContainer'
 import { shorten } from '../../helpers'
 import colors from '../../colors'
@@ -62,7 +63,7 @@ const Container = ({ id, name, image, running, created, state, status, router, c
             {status}
           </div>
         </div>
-        <div>created {moment(created).fromNow()}</div>
+        <div>created {moment(toNumber(created)).fromNow()}</div>
       </div>
       <div style={{ background: colors.other, color: '#FFF', textAlign: 'center', padding: '5px' }}>
         {shorten(id)}

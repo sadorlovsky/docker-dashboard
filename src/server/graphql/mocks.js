@@ -22,7 +22,7 @@ db.defaults({
           id: faker.random.uuid(),
           name: faker.helpers.slugify(faker.random.word())
         },
-        created: faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')),
+        created: faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')).getTime(),
         state,
         status: 'mocked status'
       }
