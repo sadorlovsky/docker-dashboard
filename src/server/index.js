@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import { apolloExpress, graphiqlExpress } from 'apollo-server'
+import { graphqlExpress, graphiqlExpress } from 'graphql-server-express'
 import { addMockFunctionsToSchema } from 'graphql-tools'
 import schema from './graphql/schema'
 import mocks from './graphql/mocks'
@@ -38,7 +38,7 @@ app.use(cors())
 app.use(
   '/graphql',
   bodyParser.json(),
-  apolloExpress({ schema })
+  graphqlExpress({ schema })
 )
 
 app.use(

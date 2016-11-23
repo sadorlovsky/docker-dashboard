@@ -2657,6 +2657,25 @@ graphql-anywhere@^0.3.0:
     lodash.merge "^4.6.0"
     lodash.pick "^4.2.0"
 
+graphql-server-core@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/graphql-server-core/-/graphql-server-core-0.4.3.tgz#3198832ce8703388713f012da023b33a3823be98"
+  optionalDependencies:
+    typed-graphql "^1.0.2"
+
+graphql-server-express@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/graphql-server-express/-/graphql-server-express-0.4.3.tgz#198674e6db4949c060b9959554d3dc4e9cc4ed9b"
+  dependencies:
+    graphql-server-core "^0.4.3"
+    graphql-server-module-graphiql "^0.4.3"
+  optionalDependencies:
+    "@types/express" "^4.0.33"
+
+graphql-server-module-graphiql@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/graphql-server-module-graphiql/-/graphql-server-module-graphiql-0.4.3.tgz#f82b92b99bb1e1b4b285c86bf6fcfa60b3a7a805"
+
 graphql-subscriptions@^0.2.0, graphql-subscriptions@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-0.2.1.tgz#9c46fdee043b2a51b7aaa61f8645c25410d806e4"
