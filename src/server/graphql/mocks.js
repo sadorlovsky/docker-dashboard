@@ -5,6 +5,28 @@ import moment from 'moment'
 
 const db = low()
 
+const status = state => {
+  if (state === 'dead') {
+    return 'Dead'
+  }
+  if (state === 'created') {
+    return 'Created'
+  }
+  if (state === 'exited') {
+    return 'Exited 1 day ago with 123 status'
+  }
+  if (state === 'paused') {
+    return 'Up 1 day (paused)'
+  }
+  if (state === 'restarting') {
+    return 'Restarting 1 day ago'
+  }
+  if (state === 'running') {
+    return 'Up 1 day'
+  }
+  return ''
+}
+
 db.defaults({
   containers: times(
     faker.random.number({ min: 10, max: 50 }),
@@ -24,7 +46,7 @@ db.defaults({
         },
         created: faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')).getTime(),
         state,
-        status: 'mocked status'
+        status: status(state)
       }
     }
   )
