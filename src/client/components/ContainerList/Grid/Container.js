@@ -6,14 +6,15 @@ import { compose } from 'redux'
 import { withApollo } from 'react-apollo'
 import { pure } from 'recompose'
 import moment from 'moment'
-import getContainer from '../../queries/getContainer'
-import { shorten } from '../../helpers'
-import colors from '../../colors'
+import { toNumber } from 'lodash'
+import getContainer from '../../../queries/getContainer'
+import { shorten } from '../../../helpers'
+import colors from '../../../colors'
 
 const styles = style({
   background: '#fff',
   borderRadius: '2px',
-  margin: '10px',
+  // margin: '10px',
   boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
   transition: 'all 0.3s cubic-bezier(.25,.8,.25,1)',
   ':hover': {
@@ -62,7 +63,7 @@ const Container = ({ id, name, image, running, created, state, status, router, c
             {status}
           </div>
         </div>
-        <div>created {moment(created).fromNow()}</div>
+        <div>created {moment(toNumber(created)).fromNow()}</div>
       </div>
       <div style={{ background: colors.other, color: '#FFF', textAlign: 'center', padding: '5px' }}>
         {shorten(id)}
