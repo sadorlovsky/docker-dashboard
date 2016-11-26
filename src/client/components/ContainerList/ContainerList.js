@@ -7,6 +7,7 @@ import getContainers from '../../queries/getContainers'
 import Loading from '../Loading'
 import OptionsBar from './OptionsBar'
 import Grid from './Grid'
+import List from './List'
 
 const ContainerList = ({ data: { loading, containerList }, stateFilter, textFilter, view }) => {
   if (loading) {
@@ -43,10 +44,7 @@ const ContainerList = ({ data: { loading, containerList }, stateFilter, textFilt
   return (
     <div>
       <OptionsBar />
-      {/*<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
-        {containers}
-      </div>*/}
-      <Grid containers={containers} />
+      {view === 'grid' ? <Grid containers={containers} /> : <List containers={containers} />}
     </div>
   )
 }

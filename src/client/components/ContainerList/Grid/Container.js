@@ -14,7 +14,7 @@ import colors from '../../../colors'
 const styles = style({
   background: '#fff',
   borderRadius: '2px',
-  // margin: '10px',
+  margin: '10px',
   boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
   transition: 'all 0.3s cubic-bezier(.25,.8,.25,1)',
   ':hover': {

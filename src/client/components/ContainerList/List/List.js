@@ -7,7 +7,7 @@ const List = ({ containers }) => {
     <Page fluid>
       <Row>
         {containers.map(c => (
-          <Column key={c.id}>
+          <Column fluid key={c.id}>
             <Container {...c} />
           </Column>
         ))}
