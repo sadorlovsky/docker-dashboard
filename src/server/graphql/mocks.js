@@ -1,11 +1,16 @@
 import low from 'lowdb'
-import { times } from 'lodash'
+import { times, toNumber } from 'lodash'
 import faker from 'faker'
 import moment from 'moment'
 
 const db = low()
 
-const status = state => {
+const status = (state, created) => {
+  const getDate = suffix => moment(
+    toNumber(
+      faker.date.between(moment(toNumber(created)), moment()).getTime()
+    )
+  ).fromNow(suffix)
   if (state === 'dead') {
     return 'Dead'
   }
@@ -13,16 +18,16 @@ const status = state => {
     return 'Created'
   }
   if (state === 'exited') {
-    return 'Exited 1 day ago with 123 status'
+    return `Exited ${getDate()} ago with 123 status`
   }
   if (state === 'paused') {
-    return 'Up 1 day (paused)'
+    return `Up ${getDate(true)} (paused)`
   }
   if (state === 'restarting') {
-    return 'Restarting 1 day ago'
+    return `Restarting ${getDate()}`
   }
   if (state === 'running') {
-    return 'Up 1 day'
+    return `Up ${getDate(true)}`
   }
   return ''
 }
@@ -35,6 +40,7 @@ db.defaults({
       const state = running ? 'running' : faker.helpers.randomize([
         'created', 'restarting', 'paused', 'exited', 'dead'
       ])
+      const created = faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')).getTime()
       return {
         id: faker.random.uuid(),
         name: faker.helpers.slugify(faker.random.word()),
@@ -44,9 +50,9 @@ db.defaults({
           id: faker.random.uuid(),
           name: faker.helpers.slugify(faker.random.word())
         },
-        created: faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')).getTime(),
+        created,
         state,
-        status: status(state)
+        status: status(state, created)
       }
     }
   )
