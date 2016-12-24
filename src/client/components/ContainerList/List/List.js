@@ -26,9 +26,11 @@ const List = ({ containers, selectedContainers, select, unselect }) => {
         <Table.Body>
           {containers.map(c => (
             <Table.Row key={c.id} active={includes(selectedContainers.map(x => x.id), c.id)}>
-              <Table.Cell collapsing onClick={e => console.log('with shift:', e.shiftKey)}>
+              <Table.Cell collapsing>
                 <Checkbox
-                  onClick={(e, { checked }) => { return checked ? unselect(c.id) : select({ id: c.id, name: c.name, running: c.running }) }}
+                  onClick={(e, { checked }) => {
+                    return checked ? unselect(c.id) : select({ id: c.id, name: c.name, running: c.running })
+                  }}
                   checked={includes(selectedContainers.map(x => x.id), c.id)}
                 />
               </Table.Cell>
