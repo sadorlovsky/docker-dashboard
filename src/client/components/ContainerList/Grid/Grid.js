@@ -6,7 +6,7 @@ const Grid = ({ containers }) => {
   return (
     <Row>
       {containers.map(c => (
-        <Column fluid sm={3} key={c.id}>
+        <Column fluid xs={12} sm={6} md={4} lg={3} key={c.id}>
           <Container {...c} />
         </Column>
       ))}
