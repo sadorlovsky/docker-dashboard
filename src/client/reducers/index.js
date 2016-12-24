@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions'
+import { without } from 'lodash'
 import * as actions from '../actions'
 
 const reducer = handleActions({
@@ -19,6 +20,9 @@ const reducer = handleActions({
   }),
   [actions.selectContainer]: (state, action) => ({
     ...state, selectedContainers: [...state.selectedContainers, action.payload]
+  }),
+  [actions.unselectContainer]: (state, action) => ({
+    ...state, selectedContainers: without(state.selectedContainers, action.payload)
   })
 }, {
   stateFilter: 'running',

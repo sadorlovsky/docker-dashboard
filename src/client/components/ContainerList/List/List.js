@@ -1,13 +1,14 @@
 import React from 'react'
 import { Table, Checkbox } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { selectContainer } from '../../../actions'
+import { includes } from 'lodash'
+import { selectContainer, unselectContainer } from '../../../actions'
 import { RunningColumn } from './RunningColumn'
 import IdColumn from './IdColumn'
 import CreatedColumn from './CreatedColumn'
 import ActionsBar from './ActionsBar'
 
-const List = ({ containers, onChange }) => {
+const List = ({ containers, selectedContainers, select, unselect }) => {
   return (
     <div style={{ margin: '20px 10px' }}>
       <Table singleLine selectable>
@@ -26,7 +27,10 @@ const List = ({ containers, onChange }) => {
           {containers.map(c => (
             <Table.Row key={c.id}>
               <Table.Cell collapsing onClick={e => console.log('with shift:', e.shiftKey)}>
-                <Checkbox onChange={() => onChange(c.id)} />
+                <Checkbox
+                  onChange={(e, { checked }) => { return checked ? select(c.id) : unselect(c.id) }}
+                  checked={includes(selectedContainers, c.id)}
+                />
               </Table.Cell>
               <Table.Cell>
                 <IdColumn data={c.id} />
@@ -54,8 +58,11 @@ const mapStateToProps = ({ rootReducer }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onChange (id) {
+  select (id) {
     return dispatch(selectContainer(id))
+  },
+  unselect (id) {
+    return dispatch(unselectContainer(id))
   }
 })
 

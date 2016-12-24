@@ -1,6 +1,7 @@
 import React from 'react'
 import { style } from 'glamor'
 import { connect } from 'react-redux'
+import plural from 'plural'
 
 const styles = style({
   position: 'sticky',
@@ -9,14 +10,14 @@ const styles = style({
   padding: '10px',
   bottom: '0',
   height: '50px',
-  backdropFilter: 'blur(2px)'
+  backdropFilter: 'blur(2px)',
+  fontSize: '18px'
 })
 
 const ActionsBar = ({ selectedContainers }) => {
   if (selectedContainers.length > 0) {
-    console.log(selectedContainers)
     return (
-      <div {...styles} />
+      <div {...styles}>Selected {selectedContainers.length} {plural('container', selectedContainers.length)}</div>
     )
   }
   return null
