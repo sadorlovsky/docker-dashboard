@@ -23,19 +23,20 @@ const ActionsBar = ({ selectedContainers }) => {
     return (
       <div {...styles}>
         <div>Selected {selectedContainers.length} {plural('container', selectedContainers.length)}</div>
-        <Button.Group>
-          <Button basic inverted>Stop</Button>
+        <div>
+          {selectedContainers.filter(c => c.running === true).length > 0 ? <Button basic inverted>Stop</Button> : null}
+          {selectedContainers.filter(c => c.running === false).length > 0 ? <Button basic inverted>Start</Button> : null}
           <Button basic inverted color='yellow'>Restart</Button>
           <Button basic inverted color='red'>Delete</Button>
-        </Button.Group>
+        </div>
       </div>
     )
   }
   return null
 }
 
-const mapStateToProps = ({ rootReducer }) => ({
-  selectedContainers: rootReducer.selectedContainers
-})
-
-export default connect(mapStateToProps)(ActionsBar)
+export default connect(
+  ({ rootReducer }) => ({
+    selectedContainers: rootReducer.selectedContainers
+  })
+)(ActionsBar)
