@@ -1,6 +1,7 @@
 import React from 'react'
 import { Input, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { throttle } from 'lodash'
 import { changeTextFilter, clearTextFilter } from '../../actions'
 
 const TextFilter = ({ textFilter, onChangeFilter, onClearClick }) => {
@@ -8,7 +9,7 @@ const TextFilter = ({ textFilter, onChangeFilter, onClearClick }) => {
     <Input
       fluid
       placeholder='Filter by id, name or image...'
-      onChange={e => onChangeFilter(e.target.value)}
+      onChange={e => throttle(onChangeFilter, 300)(e.target.value)}
       action={(
         <Button icon disabled={textFilter === ''} onClick={onClearClick}>
           <Icon name='remove' />
