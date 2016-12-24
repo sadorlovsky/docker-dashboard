@@ -9,7 +9,7 @@ import ActionsBar from './ActionsBar'
 
 const List = ({ containers, onChange }) => {
   return (
-    <div>
+    <div style={{ margin: '20px 10px' }}>
       <Table singleLine selectable>
         <Table.Header>
           <Table.Row>
