@@ -42,7 +42,7 @@ db.defaults({
       ])
       const created = faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')).getTime()
       return {
-        id: faker.random.uuid(),
+        id: faker.random.uuid().replace('-', '1'),
         name: faker.helpers.slugify(faker.random.word()),
         running,
         command: faker.hacker.phrase(),

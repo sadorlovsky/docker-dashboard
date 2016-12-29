@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Checkbox } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { includes } from 'lodash'
+import { includes, uniq } from 'lodash'
 import { selectContainer, unselectContainer } from '../../../actions'
 import { RunningColumn } from './RunningColumn'
 import IdColumn from './IdColumn'
@@ -14,7 +14,14 @@ const List = ({ containers, selectedContainers, select, unselect }) => {
       <Table singleLine selectable>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell />
+            <Table.HeaderCell>
+              <Checkbox
+                onClick={(_, { checked }) => {
+                  return checked ? containers.map(c => unselect(c.id)) : containers.map(c => select({ id: c.id, name: c.name, running: c.running }))
+                }}
+                checked={uniq(selectedContainers).length === containers.length}
+              />
+            </Table.HeaderCell>
             <Table.HeaderCell>ID</Table.HeaderCell>
             <Table.HeaderCell>State</Table.HeaderCell>
             <Table.HeaderCell>Name</Table.HeaderCell>
@@ -28,7 +35,7 @@ const List = ({ containers, selectedContainers, select, unselect }) => {
             <Table.Row key={c.id} active={includes(selectedContainers.map(x => x.id), c.id)}>
               <Table.Cell collapsing>
                 <Checkbox
-                  onClick={(e, { checked }) => {
+                  onClick={(_, { checked }) => {
                     return checked ? unselect(c.id) : select({ id: c.id, name: c.name, running: c.running })
                   }}
                   checked={includes(selectedContainers.map(x => x.id), c.id)}

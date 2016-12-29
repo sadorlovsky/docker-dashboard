@@ -3,6 +3,7 @@ import { Button } from 'semantic-ui-react'
 import { style } from 'glamor'
 import { connect } from 'react-redux'
 import plural from 'plural'
+import { uniq } from 'lodash'
 
 const styles = style({
   position: 'sticky',
@@ -22,10 +23,19 @@ const ActionsBar = ({ selectedContainers }) => {
   if (selectedContainers.length > 0) {
     return (
       <div {...styles}>
-        <div>Selected {selectedContainers.length} {plural('container', selectedContainers.length)}</div>
+        <div>Selected {uniq(selectedContainers).length} {plural('container', selectedContainers.length)}</div>
         <div>
-          {selectedContainers.filter(c => c.running === true).length > 0 ? <Button basic inverted>Stop</Button> : null}
-          {selectedContainers.filter(c => c.running === false).length > 0 ? <Button basic inverted>Start</Button> : null}
+          {selectedContainers
+            .filter(c => c.running === true)
+            .length > 0 && selectedContainers
+            .filter(c => c.running === false)
+            .length === 0 ? <Button basic inverted>Stop</Button> : null
+          }
+          {selectedContainers
+            .filter(c => c.running === false)
+            .length > 0 && selectedContainers
+            .filter(c => c.running === true)
+            .length === 0 ? <Button basic inverted>Start</Button> : null}
           <Button basic inverted color='yellow'>Restart</Button>
           <Button basic inverted color='red'>Delete</Button>
         </div>
