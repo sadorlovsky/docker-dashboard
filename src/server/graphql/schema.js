@@ -30,6 +30,7 @@ const schema = [`
     stopContainer(id: String!): Container
     startContainer(id: String!): Container
     restartContainer(id: String!): Container
+    renameContainer(id: String!, name: String!): Container
   }
 
   schema {

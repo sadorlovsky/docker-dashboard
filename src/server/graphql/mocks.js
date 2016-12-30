@@ -42,7 +42,7 @@ db.defaults({
       ])
       const created = faker.date.between(moment().subtract(1, 'year'), moment().subtract(1, 'days')).getTime()
       return {
-        id: faker.random.uuid().replace('-', '1'),
+        id: faker.random.uuid().replace(/-/g, Math.floor(Math.random() * 10)),
         name: faker.helpers.slugify(faker.random.word()),
         running,
         command: faker.hacker.phrase(),
@@ -97,6 +97,12 @@ const mocks = {
           )
         }, 3000)
       })
+    },
+    renameContainer (_, { id, name }) {
+      return db.get('containers')
+        .find({ id })
+        .assign({ name })
+        .value()
     }
   })
 }
