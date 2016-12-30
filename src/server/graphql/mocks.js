@@ -85,6 +85,18 @@ const mocks = {
         .find({ id })
         .assign({ running: true, state: 'running' })
         .value()
+    },
+    restartContainer (_, { id }) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(
+            db.get('containers')
+              .find({ id })
+              .assign({ running: true, state: 'running' })
+              .value()
+          )
+        }, 3000)
+      })
     }
   })
 }
