@@ -9,7 +9,8 @@ export default gql`
         name
       }
       running
-      state
+      state,
+      status
     }
   }
 `
